@@ -2,6 +2,12 @@
 
 ## Título
 ### Subtítulo
+Markdown nació como herramienta de conversión de texto plano a HTML.
+
+Esta herramienta fue creada en 2004 por John Gruber, y se distribuye de manera gratuita bajo una licencia BSD.
+
+Aunque en realidad Markdown también se considera un lenguaje que tiene la finalidad de permitir crear contenido de una manera sencilla de escribir, y que en todo momento mantenga un diseño legible, a
+
 Este es un ejemplo de texto que da entrada a una lista genérica de elementos:
 - Elemento 1
 - Elemento 2
