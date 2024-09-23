@@ -39,3 +39,13 @@ En el lenguaje Markdown encontrarás tres tipos de elementos básicos que a su v
         Omitir Markdown
 
 sdfsdfdsfsdfsdfsdfs
+
+Es **importante** que cuando realices *Codigo aqui* no se te olvide de utilizar chatgpt
+
+[Para ir a Markdown pincha aqui](https://markdown.es/)
+
+
+## IAW
+## Hola estoy instalando Git y Visual studio Code ¡Que guay!
+En este tema vamos a instalar los programas que nos haran falta para el resto del curso
+    Visual studio code
