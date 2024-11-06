@@ -6,25 +6,43 @@
     <title>Ejercicio 1 - Repaso 2</title>
 </head>
 <body>
-    <div> Introduce tu altura </div>
+    <div> Introduce tu peso </div>
     <input type="number" id="cosa1">
         <br> <br>
-        <div>Introduce tu peso</div>
+        <div>Introduce tu altura </div>
     <input type="number" id="cosa2">
     <button onclick="calculatodo()"> Calculo </button>
 
-  <p id="resultado"></p>
+  <p id="resultado"></p> 
+  <br>
+  <p id="recomendacion"></p>
     <script>
-        let asd = parseInt(document.getElementById("dni").value); 
-        let peso = parseInt(document.getElementById("dni").value); 
-        let calculo = altura / peso
-        document.getElementById("resultado").innerHTML="Tu indice de masa corporal es " + calculo
+        function calculatodo(){
+        let altura = parseFloat(document.getElementById("cosa2").value); 
+        let peso = parseFloat(document.getElementById("cosa1").value); 
+        let calculo = peso / altura;
+        document.getElementById("resultado").innerHTML="Tu indice de masa corporal es " + calculo + " kg";
+        
+        if (calculo < 18.5){
+            document.getElementById("recomendacion").innerHTML = "Estas canijo"
+        }
+        else if (calculo <= 24.9){
+            document.getElementById("recomendacion").innerHTML = "Estas normal"
+        }
+
+        else if (calculo <= 30){
+            document.getElementById("recomendacion").innerHTML = "Estas gordo"
+        }
+        else {
+            document.getElementById("recomendacion").innerHTML = "Estas obeso"
+        }
+        }
     </script>
 </body>
 </html>
 
-Realiza un documento html con JavaScript que permita a partir de dos de cajas de
+<!-- Realiza un documento html con JavaScript que permita a partir de dos de cajas de
 texto recibir la información de un usuario sobre su altura en centímetros y masa
 en kilogramos para calcular su índice de masa corporal(IMC). En función del
 resultado obtenido el script mostrará un mensaje en pantalla ofreciendo el
-coeficiente obtenido así como una indicación en base a la siguiente tabla:
+coeficiente obtenido así como una indicación en base a la siguiente tabla: -->

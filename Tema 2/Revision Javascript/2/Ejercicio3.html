@@ -1,1 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 3 - Repaso 2</title>
+    <script src="validar.js"></script>
+</head>
+<body>
+    <label for="">Nombre:</label><input id="nombre" type="text"><span class="error" id="campo1"></span><br>
+    <label for="">Apellidos:</label><input id="apellidos" type="text"><span class="error" id="campo2"></span><br>
+    <label for="">Correro electronico:</label><input id="correoelectronico" type="text"><span class="error" id="campo3"></span><br>
+    <label for="">Direccion:</label><input id="direccion" type="text"><br>
+    <label for="">Ciudad:</label><input id="ciudad" type="text"><br>
+    <label for="">Telefono:</label><input id="telefono" type="text"><br>
+    <label for="">DNI:</label><input id="DNI" type="text"><span class="error" id="campo4"></span><br>
+    <label for="">PIN:</label><input id="pin" type="text"><span class="error" id="campo5"></span><br>
+    <label for="">Confirma PIN:</label><input id="pin2" type="text"><span class="error" id="campo6"></span><br>
+    <input type="text" id="PIN2">
+    <button onclick="validar()"> Validar </button>
+</body>
+</html>
+
+<button onclick="validar(document.getElementsByTagName('input'))">Validar</button>
+
 javascript expresiones regulares 8 digitos
+
+<!--Realiza un formulario que permita dar de alta un usuario en un sitio web. El
+formulario solicitará los siguientes datos:
+○ Nombre(requerido)
+○ Apellido(requerido)
+○ Correo electrónico (requerido)
+○ Dirección
+○ Ciudad
+○ Teléfono
+○ DNI (requerido y validado por Javascript)
+○ PIN (requerido 8 dígitos)
+○ PIN repetido (requerido 8 dígitos)
+Antes de enviar los datos el formulario validará que los campos requeridos se
+rellenan y en caso de no hacerlo mostrará un mensaje de error indicando que
+campo o campos son erróneos o no son acorde a lo solicitado.
+Si los datos suministrados son correctos presentará un mensaje en pantalla
+indicando el nombre de usuario creado que consistirá en las dos primeras letras -->

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Ejercicio 2 - Repaso 2</title>
+</head>
+<body>
+  Introduce el texto:  <input type="text" id="texto">
+  <button onclick="guardar()"> Guardar</button>
+  <p id="mostrarArray"></p>
+
+  <script>
+    const mensajes = [];
+    function guardar(){
+        const enterito = mensajes.push(document.getElementById("texto").innerHTML);
+        document.getElementById("mostrarArray").innerHTML = enterito;
+    }
+
+  </script>
+</body>
+</html>
+
+<!-- Realiza un script que permita escribir mensajes de texto como en cualquier red
+social. Dichos mensajes se almacenarán en un array mostrándose en pantalla.
+Asociado a cada mensaje de texto el documento mostrará el icono de una
+papelera para poder borrar el mensaje asociado.
+Posible mejora:
+● Ordenar los mensajes de manera alfabética. -->
