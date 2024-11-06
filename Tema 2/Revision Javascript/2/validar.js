@@ -21,16 +21,20 @@ function validar(elementos){
         estanCorrectos = false;
     }
     
-    if (!validaPasswords()){ //si no son validas las contraseñas, es decir la funcion es distinta de esta
-    document.getElementById("campo4").innerHTML = "La contraseña no cumple con requisitos de longitud o no coinciden";        
-    document.getElementById("campo5").innerHTML = "La contraseña no cumple con requisitos de longitud o no coinciden";
+    if (!validaPIN()){ //si no son validas las contraseñas, es decir la funcion es distinta de esta
+    document.getElementById("campo5").innerHTML = "El PIN con requisitos de longitud o no coinciden";        
+    document.getElementById("campo6").innerHTML = "El PIN no cumple con requisitos de longitud o no coinciden";
     estanCorrectos = false;
     }
     if (!validarDNI()){ //valido contraseñas
-        document.getElementById("campo6").innerHTML = "DNI no valido +(12345678X)";        
+        document.getElementById("campo4").innerHTML = "DNI no valido +(12345678X)";        
         estanCorrectos = false;
         }
     return estanCorrectos;
+
+    if (estanCorrectos = true){
+        alert(SSSS)
+    }
 }
 
 /* Función validarEmail tomada de:
@@ -48,15 +52,20 @@ function validarEmail(){
     return valido;
 } 
 
-function validaPasswords(){
+function validaPIN(){
 //return (document.getElementById("password1").value == document.getElementById("password2").value) && document.getElementById("password2").value.length>=8;
-let clave1 = document.getElementById("password1").value;
-let clave2 = document.getElementById("password2").value;
-let passwordsOK = true; //Cumple con los requisitos establecidos 
+let pin1 = document.getElementById("pin1").value;
+let pin2 = document.getElementById("pin2").value;
+let pinOK = true; //Cumple con los requisitos establecidos 
+let comprobar = /^\+569\d{0,8}$/;
+
+var n = "+56957069354";
+console.log(a.test(n));
+
 // por defecto es true 
-if (clave1.length<8 || (clave1!=clave2)) //cuando una de las dos sea verdadera, esta mal
-    passwordsOK = false;
-return passwordsOK;
+if (pin1.length<8 || (pin1!=pin2)) //cuando una de las dos sea verdadera, esta mal
+    pinOK = false;
+return pinOK;
 }
 
 function validarDNI(){
