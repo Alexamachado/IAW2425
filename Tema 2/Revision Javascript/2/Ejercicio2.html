@@ -4,19 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Ejercicio 2 - Repaso 2</title>
+    <style>
+      .boton-image {
+          background-image: url('iconoPapelera.png');
+          background-size: cover;
+          width: 65px;
+          height: 65px;
+          float: right;
+      }
+      .tweet {
+          width:500px;
+          border: 1px solid gray;
+          border-radius: 10px;
+      }
+    </style>
 </head>
 <body>
-  Introduce el texto:  <input type="text" id="texto">
-  <button onclick="guardar()"> Guardar</button>
+  Introduce el texto:  <input type="text" id="textoguardar">
+  <button onclick="guardar()"> Guardar</button>   <button onclick="ordenar()">Ordenar</button>    
   <p id="mostrarArray"></p>
 
   <script>
-    const mensajes = [];
-    function guardar(){
-        const enterito = mensajes.push(document.getElementById("texto").innerHTML);
-        document.getElementById("mostrarArray").innerHTML = enterito;
-    }
+    var mensajes = [];
 
+    function imprimirArray(){  
+      let longitud = mensajes.length;
+      let i=0, codigoHTML="";
+      let icono="<div class='tweet'><img src='iconoTwitter.png'>";
+        for (i=0;i<longitud;i++){
+            codigoHTML+=icono+mensajes[i]+" <button class=\"boton-image\" onclick='eliminar(mensajes["+i+"]);''></button><br></div>";
+        }
+        document.getElementById("mostrarArray").innerHTML=codigoHTML;
+    }
+    function ordenar(){
+      mensajes.sort();
+      imprimirArray();
+    }
+    function eliminar(cosa){
+      let mensa = mensajes.indexOf(cosa);
+      mensajes.splice(mensa,1);
+      imprimirArray();
+    }
+    function guardar(){
+    let anadirelement = document.getElementById("textoguardar").value;
+    mensajes.push(anadirelement);
+    imprimirArray();
+    }
   </script>
 </body>
 </html>
@@ -27,3 +60,6 @@ Asociado a cada mensaje de texto el documento mostrará el icono de una
 papelera para poder borrar el mensaje asociado.
 Posible mejora:
 ● Ordenar los mensajes de manera alfabética. -->
+
+
+
