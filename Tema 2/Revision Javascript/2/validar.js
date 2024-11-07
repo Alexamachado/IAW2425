@@ -57,7 +57,7 @@ function validaPIN(){
 let pin1 = document.getElementById("pin1").value;
 let pin2 = document.getElementById("pin2").value;
 let pinOK = true; //Cumple con los requisitos establecidos 
-let comprobar = /^\+569\d{0,8}$/;
+let comprobar = /\d{8,8}/;
 
 var n = "+56957069354";
 console.log(a.test(n));
@@ -80,4 +80,9 @@ function validarDNI(){
     if (letraUsuario!=letraReal)  // Si no coincide letras es falso
         dniValido = false;
     return dniValido;
+}
+
+function generausuario(){
+    let codigoHTML = ""
+        codigoHTML
 }
