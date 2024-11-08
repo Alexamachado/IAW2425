@@ -84,6 +84,17 @@ function generausuario(){
 
 }
 
+function mensaje(){
+    textonombre =
+    textoapellidos =
+    textotelefonos =
+    let letrasnombres = textonombre.substring(1, 2);
+    let letrasapellidos = textoapellidos.substring(1, 2);
+    let letrastelefonos = textotelefonos.substring(-3, -1);
+    let nombreusuario = letrasnombres + letrasapellidos + letrastelefonos;
+    alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)
+}
+
 if($("#nombre").val()==''){
     $("#campo1").text("Rellena este campo")
 }
