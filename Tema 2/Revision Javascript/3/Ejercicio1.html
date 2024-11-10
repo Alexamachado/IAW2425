@@ -4,3 +4,34 @@ usuario que escriba un número comprendido en este rango y nos dirá si hemos
 acertado o no. -->
 
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Ejercicio 1 - Repaso 3</title>
+</head>
+<body>
+   <h2> <center> INTENTA ACERTAR UN NUMERO ENTRE 0 Y 5 !!</center> </h2>  
+   <input type="number" id="usernumber">
+   <button onclick="check()"> Acertaste? </button>    
+   <button onclick="recargar()"> Recargar numero</button>
+   <h2> <center> <p id="letsee"> </p> </center> </h2>
+
+   <script>
+        var randomnumber = Math.floor(Math.random() * 6);
+        function recargar(){
+            randomnumber = Math.floor(Math.random() * 6);
+            document.getElementById("letsee").innerHTML = ""
+        } 
+        function check(){
+            let userinput = document.getElementById("usernumber").value;
+            if(randomnumber==userinput){
+                document.getElementById("letsee").innerHTML = "Felicidades has acertado!"
+            }else {
+                document.getElementById("letsee").innerHTML = "Try Again!!"
+            }
+        }
+   </script>
+</body>
+</html>
