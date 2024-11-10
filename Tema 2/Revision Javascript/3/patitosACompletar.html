@@ -45,7 +45,7 @@
         </div>
         <script type="text/javascript">
             /* Sustituye convenientemente los ************ por lo que corresponda */
-            var puntos=************;
+            var puntos= 0;
             function aparecerpatito()
             {
                 var top = Math.random()*400;
@@ -62,7 +62,7 @@
                 document.getElementById("patito").style.display = "block";
             }
             function desapareceMensaje(){
-                ************ = ""; /* Hacemos que no ponga nada en el mensaje */
+                document.getElementById("mensaje").innerHTML = ""; /* Hacemos que no ponga nada en el mensaje */
             }
             function aparecerpatitoDespuesRetraso()
             {
@@ -80,16 +80,16 @@
             {
                 if (e.target != document.getElementById("patito"))
                 {
-                    puntos = ************;
+                    puntos = puntos - 1;
                     document.getElementById("mensaje").innerHTML = "¡Fallaste!";
                     
                 }
                 else{
-                    puntos = ************;
+                    puntos = puntos + 1;
                     document.getElementById("mensaje").innerHTML = "¡Acierto!";
                 }
-                ************.style.display = "none";
-                document.getElementById("puntos").innerHTML = ************; /* Establecemos los puntos */
+                document.getElementById("patito").style.display = "none";
+                document.getElementById("puntos").innerHTML = puntos; /* Establecemos los puntos */
                 aparecerpatitoDespuesRetraso();
                 desapareceMensajeDespuesRetraso();
             }
