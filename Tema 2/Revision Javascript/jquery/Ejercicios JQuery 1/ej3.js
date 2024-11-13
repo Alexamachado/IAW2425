@@ -1,8 +1,15 @@
 $(document).ready(function () {
+    var tamano=100
     $("#btn-aumentar").click(function(){
-        $("#encabezado,.pares").css({"font-size":"10%","color": "red"});
+        tamano +=20;
+        $("#encabezado,.pares").css({"font-size": + tamano +"%","color": "red"});
     });
     $("#btn-disminuir").click(function(){
-        $("#encabezado,.pares").css({"font-size":"10%","color": "blue"});
+        tamano -=20;
+        $("#encabezado,.pares").css({"font-size": + tamano +"%","color": "blue"});
     });
 });
+
+function aumentartamano(){
+    tamano+=25;
+    document.getElementById("parrafo").style.fontSize = tamano+"%"}
