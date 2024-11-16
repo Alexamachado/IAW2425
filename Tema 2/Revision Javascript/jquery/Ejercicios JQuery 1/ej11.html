@@ -21,12 +21,32 @@
 </head>
 <body>
     <h1>El método empty() de jQuery</h1>
-    <div>
+    <div id="cosa">
         Texto
     </div>
-    <button>Vaciar div</button>
+    <!-- <button>Vaciar div</button> -->
+    <button onclick="cambiar()">Mostrar/Ocultar</button>
     <script>
-       /* Incluye aquí el código jQuery */
+      /* $(document).ready(function(){
+            $("button").click(function(){
+                $("div").empty()
+            })
+       }) */
+       function cambiar(){
+        var texto = document.getElementById("cosa");
+        if (texto.style.visibility === "hidden"){
+            texto.style.visibility = "visible"
+        } else {
+            texto.style.visibility = "hidden"
+        }
+       } 
     </script>
 </body>
 </html>
+
+<!-- Ilustra el funcionamiento del método empty() de jQuery presentando una caja que
+contenga un texto centrado y que mediante un botón vacíe de contenido el mismo. -->
+
+<!-- Modifica ligeramente el ejercicio anterior para que en lugar de vaciar literalmente el
+div simplemente visualice o no el texto en función de un botón, “Mostrar/Ocultar
+texto”. Utiliza algunas de las funciones de clases que tiene jQuery. -->

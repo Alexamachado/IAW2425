@@ -23,8 +23,15 @@
     <input type="text" value="">
     <button>Ver val()</button>
     <script>
-       /* Incluye aquí el código jQuery */
+       $(document).ready(function(){
+            $("button").click(function(){
+                $("input:text").val("Funciona!!")
+            }) 
+        })
         
     </script>
 </body>
 </html>
+
+<!-- Realiza un documento web con un campo de tipo input y prueba cómo funciona el
+método val() de jQuery visualizando ante el evento click de un botón su valor. -->

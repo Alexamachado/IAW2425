@@ -16,7 +16,7 @@
             border-radius: 10px;
         }
     </style>
-    <!-- Incluye aquí jQuery -->
+    <script src="../../jquery-3.7.1.js"></script>
 </head>
 <body>
     <h1>Las funciones each y append en jQuery</h1>
@@ -30,7 +30,13 @@
     </ul>
 
     <script>
-        /* Rellena aquí el código jQuery */
+        $(document).ready(function () {
+            $("li").append("<img src='descarga.png' width=30 height=30>")
+        });
      </script>
 </body>
 </html>
+
+<!-- Realiza una página web con una lista de enlaces. Utiliza jQuery para adicionar a
+todos y cada uno de los enlaces la imagen de un icono de descarga tomada de
+iconarchive.com. -->

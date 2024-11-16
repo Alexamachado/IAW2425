@@ -16,7 +16,7 @@
             border-radius: 10px;
         }
     </style>
-    <!-- Incluye aquí jQuery -->
+    <script src="../../jquery-3.7.1.js"> </script>
 </head>
 <body>
     <h1>getters en jQuery</h1>
@@ -37,7 +37,22 @@
     <button id="btn-parrafo">Obtener html de un párrafo</button>
 
     <script>
-       /* Rellena aquí el código jQuery */
+       $(document).ready(function(){
+            $("#btn-imagen").click(function(){
+                alert("El src de la imagen es: " + $("img").attr("src"));
+            })
+            $("#btn-encabezado").click(function(){
+                alert("El texto del encabezado es: " + $("h1").html());
+            })
+            $("#btn-parrafo").click(function(){
+                alert("El texto del encabezado es: " + $("p").html());
+            })
+       })
     </script>
 </body>
 </html>
+
+<!-- Para ilustrar el funcionamiento del método attr de jQuery crea una web con un par de
+botones “Obtener scr de la imagen”, “Obtener html del encabezado”, “Obtener
+html de un párrafo” que al hacer clic sobre ellos permita visualizar mediante un alert
+de JavaScript los valores correspondientes. -->

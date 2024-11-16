@@ -19,14 +19,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
     <script>
        $(document).ready(function(){
-            var count_h1 = ("h1").lenght;
-            var count_p = $("p").lenght();
-            var count_img = $("img").lenght();
-            var count_src = $("src").lenght()
-            $("#encabezados").append("count_h1");
-            $("#parrafos").append(count_p);
-            $("#imagenes").append("count_img");
-            $("#enlaces").append("count_src");
+            $("#encabezados").html( $("h1,h2").length);
+            $("#parrafos").html( $("p").length );
+            $("#imagenes").html( $("img").length );
+            $("#enlaces").html( $("a").length );
        })
     </script>
 </head>
