@@ -1,7 +1,7 @@
 function acierto(){
     
 }
-
+var time = 0;
 function aparececuadrado()
 {
     var top = Math.random()*400;
@@ -31,18 +31,29 @@ aparececuadradoDespuesRetraso();
 
 document.getElementById("zone").onclick = function (e)
 {
-    if (e.target != document.getElementById("patito"))
+    if (e.target != document.getElementById("cuadrado"))
     {
-        puntos = puntos - 1;
+        
         document.getElementById("gotit").innerHTML = "¡Fallaste!";
         
     }
     else{
-        puntos = puntos + 1;
+        time = puntos + 1;
         document.getElementById("gotit").innerHTML = "¡Acierto!";
     }
     document.getElementById("cuadrado").style.display = "none";
-    document.getElementById("besttime").innerHTML = puntos; /* Establecemos los puntos */
+    document.getElementById("besttime").innerHTML = time; /* Establecemos los puntos */
     aparecerpatitoDespuesRetraso();
     desapareceMensajeDespuesRetraso();
 }
+
+
+var start = new Date().getTime();
+
+for (i = 0; i < 50000; ++i) {
+// do something
+}
+
+var end = new Date().getTime();
+var time = end - start;
+alert('Execution time: ' + time);

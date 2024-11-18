@@ -14,9 +14,28 @@
         <p id="objetivo"></p>
     </div>
     <script>
-        /* Completar el código jQuery aquí */
+        $(document).ready(function () {
+          let apikey = "f5b5e874d197efc0fc1b9c59f039c190"
+        let url = "http://api.openweathermap.org/data/2.5/weather?"
+        let latitud = "37.38283"
+        let longitud = "-5.97317"
+        let url_completa = url + "lat="+latitud + "&lon=" + longitud + "&units=metric&appid=" + apikey
+          $.get(url_completa, function(temperatura){
+            $("#objetivo").text( "La temperatira en sevilla: " + temperatura.main.temp)
+            console.log(temperatura)
+          }).fail(
+            $("#objetivo").text("ha habido un error vuelve a cargar la pagina")
+          )
+        });
         
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
   </body>
 </html>
+
+
+  <!-- 6. Create una cuenta en OpenWeatherMap, obtén una API key para obtener el tiempo
+  actual y muestra en el párrafo identificado como “objetivo” la temperatura. Considera
+  la posibilidad de que el servidor no esté disponible o la solicitud sea inválida para
+  mostrar un mensaje de error. -->
+

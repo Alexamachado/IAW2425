@@ -30,15 +30,21 @@ function validar(elementos){
         estanCorrectos = false;
         }
     return estanCorrectos;
-
-    if (estanCorrectos = true){
-        alert(SSSS)
-    }
 }
 
 /* Función validarEmail tomada de:
 * https://www.coderbox.net/blog/validar-email-usando-javascript-y-expresiones-regulares/
 */
+function validarName(){
+    let nombreOK
+
+}
+
+function validarApellidos(){
+    let apellidosOK
+    
+}
+
 function validarEmail(){              
 	var valido;
 	var emailField = document.getElementById('email');
@@ -52,16 +58,16 @@ function validarEmail(){
 } 
 
 function validaPIN(){
-//return (document.getElementById("password1").value == document.getElementById("password2").value) && document.getElementById("password2").value.length>=8;
-let pin1 = document.getElementById("pin1").value;
-let pin2 = document.getElementById("pin2").value;
-let pinOK = true; //Cumple con los requisitos establecidos 
-let comprobar = /\d{8,8}/;
+    //return (document.getElementById("password1").value == document.getElementById("password2").value) && document.getElementById("password2").value.length>=8;
+    let pin1 = document.getElementById("pin1").value;
+    let pin2 = document.getElementById("pin2").value;
+    let pinOK = true; //Cumple con los requisitos establecidos 
+    let comprobar = /\d{8,8}/;
 
 // por defecto es true 
-if (pin1.length<8 || (pin1!=pin2)) //cuando una de las dos sea verdadera, esta mal
-    pinOK = false;
-return pinOK;
+    if (pin1.length<8 || (pin1!=pin2)) //cuando una de las dos sea verdadera, esta mal
+        pinOK = false;
+    return pinOK;
 }
 
 function validarDNI(){
@@ -84,10 +90,21 @@ function generausuario(){
 
 }
 
-function mensaje(){
-    textonombre =
-    textoapellidos =
-    textotelefonos =
+/*function mensaje(){
+    textonombre = document.getElementById("nombre").value
+    textoapellidos = document.getElementById("apellidos").value
+    textotelefonos = document.getElementById("telefono").value
+    let letrasnombres = textonombre.substring(1, 2);
+    let letrasapellidos = textoapellidos.substring(1, 2);
+    let letrastelefonos = textotelefonos.substring(-3, -1);
+    let nombreusuario = letrasnombres + letrasapellidos + letrastelefonos;
+    alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)
+}*/
+
+if (estanCorrectos = true){
+    textonombre = document.getElementById("nombre").value
+    textoapellidos = document.getElementById("apellidos").value
+    textotelefonos = document.getElementById("telefono").value
     let letrasnombres = textonombre.substring(1, 2);
     let letrasapellidos = textoapellidos.substring(1, 2);
     let letrastelefonos = textotelefonos.substring(-3, -1);
