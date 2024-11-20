@@ -28,11 +28,23 @@
             <li><a class="enlaces" href="BOE-A-2022-19085.pdf">BOE-A-2022-19085.pdf</a></li>
         </ul>
     </div>
-    
+    <p class="numeroEnlaces"></p>
+
+
     <script>
        $(document).ready(function(){
-        $(".enlaces").each(function(){
-          $(".enlaces").append(' ('+unidadesLegibles(size)+')')
+        $(".numeroEnlaces").html("El numero de enlaces de enlaces es: " + $("a").length)
+        $(".enlaces").each(function(){ /*Con cada enlace voy a solicitar el tamaño al servidor
+                                        y añadirlo con un append al lado */
+            let that = $(this);
+            $.ajax({
+            type: "HEAD",                                       
+            url: that.attr("href"),             
+            complete: function (xhr){  
+            let size = unidadesLegibles(xhr.getResponseHeader('Content-Length')); 
+            that.append(' ('+ size +')'); 
+            }
+          })
         })
        }) 
     </script>
@@ -45,5 +57,4 @@ enlaces cuya clase sea “enlaces” y solicitando al servidor el ‘Content-Len
 mismos para añadirles su tamaño al lado.
 Pista: Utilizaremos el método each para recorrer todos los enlaces y append para
 asociarles el tamaño en formato legible. -->
-
 
