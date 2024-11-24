@@ -93,7 +93,57 @@
         </form>
      </div>
     <script>
-        
+           $.datepicker.regional['es'] = {
+                closeText: 'Cerrar',
+                prevText: '<Ant',
+                nextText: 'Sig>',
+                currentText: 'Hoy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+                weekHeader: 'Sm',
+                dateFormat: "DD dd 'de' MM",
+                firstDay: 1,
+                isRTL: false,
+                minDate: "+1D", maxDate: "+1W +1D",
+                showMonthAfterYear: false,
+                yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['es']);
+        $(document).ready(function () {
+            $("#fecha").datepicker()
+
+            $("#reserva").click(function(evento){
+                $("#diaReserva, #totalPrecio").empty()
+                evento.preventDefault()
+                let pista = $("#pista option:selected").text()
+                let hora = $("#hora option:selected").text()
+                let truehora = hora.substring(0, 13)
+                let dia = $("#fecha").val()
+                if(dia==''){
+                    $("#diaReserva").html("Tiene que elegir un dia")
+                    $("#totalPrecio").empty()
+                }else{
+                $("#diaReserva").html("Ha reservado el dia " + dia + " en la " + pista + " a la hora " + truehora)
+
+                let horap = $("#hora").val()
+                let preciohora
+                if(horap<=4){
+                    preciohora=10}
+                if(horap==5 || horap==6){
+                    preciohora=12}
+                if(horap>=7){
+                    preciohora=16}
+                let precioluz
+                if($("#luz").is(":checked")){
+                    precioluz = 4
+                }else{ precioluz = 0}
+                let preciototal = precioluz + preciohora
+                $("#totalPrecio").append("Precio: " + preciototal)
+        }})
+        });
     </script>
 </body>
 </html>

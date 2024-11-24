@@ -92,24 +92,25 @@
                 $("#resultados").text("")
                 $.get(total, function(productos){
                     console.log(productos)
-                    $("#resultados").append("<center> <img src=" + datos.image + " width='200px' height='200px'> <center> <br>" 
-                         + "<div align='left'> Titulo: " + datos.title + "<br>" +
-                         "Descripcion: " + datos.description + "<br>" +
-                         "Precio: " + datos.price + "</div>" )
-                })
-            }).fail(
-                $("#resultados").text("Ha fallado, vuelve a recargar la pagina"))
+                    $("#resultados").append("<center> <img src=" + productos.image + " width='200px' height='200px'> <center> <br>" 
+                         + "<div align='left'> Titulo: " + productos.title + "<br>" +
+                         "Descripcion: " + productos.description + "<br>" +
+                         "Precio: " + productos.price + "</div>" )
+                }).fail(function(){
+                    $("#resultados").text("Ha fallado, vuelve a recargar la pagina")})
+            })       
             $("#btn-todos").click(function(){
                 $("#resultados").text("")
                 $.get(url, function(productos){
                     console.log(productos)
-                $("#resultados").append( for(let i = 0; i<20; i++){
-                    
-                })
-
-                })
-            })
-            
+                    for(var i = 0; i<productos.length; i++){
+                $("#resultados").append( "<center> <img src=" + productos[i].image + " width='200px' height='200px'> <center> <br>" 
+                    + "<div align='left'> Titulo: " + productos[i].title + "<br>" +
+                    "Descripcion: " + productos[i].description + "<br>" +
+                    "Precio: " + productos[i].price + "</div>" )}
+                }).fail(function(){
+                    $("#resultados").text("Ha fallado, vuelve a recargar la pagina")})
+            })        
         })
     </script>
 </body>
