@@ -1,15 +1,37 @@
-<!-- Utilizando el API de https://restcountries.com / crea un documento HTML con jQuery
+<!-- Utilizando el API de https://restcountries.com/ crea un documento HTML con jQuery
 y AJAX que introduciendo el nombre de un pais en una caja de texto muestre:
 Nombre, Capital, Población y Bandera.-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ejercicio 3</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
-<body>
-    
+<body> 
+    <h1> Introduce el nombre en español</h1>
+    <input type="text" id="pais" placeholder="Mete el país aqui"> <button id="boton"> Pulsa el boton</button>
+    <p id="respuesta"></p>
+
+    <script>
+        $(document).ready(function(){
+            $("#boton").click(function(){
+                $("#respuesta").empty()
+                let url = "https://restcountries.com/v3.1/translation/"
+                let nombre =  $("#pais").val() 
+                $.get(url + nombre,function(pais){ //name
+                    console.log(pais)
+                    $("#respuesta").append("<div> Nombre: " + pais[0].translations.spa.common + "</div>" + 
+                        "<div> Capital: " + pais[0].capital  + "</div>" + "<div> Población: " + pais[0].population + "</div> <br>" 
+                        + "<img src=" + pais[0].flags.png + ">" 
+                    )
+                }).fail(function(){
+                $("#respuesta").html("El pais que ha introducido no existe")
+            })
+            })
+        })
+    </script>
 </body>
 </html>

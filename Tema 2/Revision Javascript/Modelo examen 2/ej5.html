@@ -2,13 +2,33 @@
 imagen de un perro cada vez que el usuario haga clic en un botón.-->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Ejercicio 5</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 </head>
 <body>
-    
+    <button id="boton">Pulsame!!</button>
+    <p id="resultado"></p>
+
+    <script>
+        $(document).ready(function(){
+            $("#boton").click(function(){
+                $("#resultado").empty()
+                let url = "https://dog.ceo/api/breeds/image/random"
+                $.get(url).done(function(perro){
+                    console.log(perro)
+                    $("#resultado").append(
+                        "<img src=" + perro.message + " width='450px' height='400px'>"
+                    )
+                })
+            })
+        })
+
+    </script>
+
 </body>
 </html>
+

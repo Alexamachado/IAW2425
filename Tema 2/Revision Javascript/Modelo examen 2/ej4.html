@@ -2,13 +2,37 @@
 de un Pokemon o su número nos muestre información sobre el mismo. -->
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> Ejercicio 4 </title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
 </head>
 <body>
-    
+    <h2> Busca el pokemon que quieras</h2>
+    <input type="text" id="nombre" placeholder="Pon nombre o id"> <button id="boton"> Buscar </button>
+    <p id="resultado"> </p>
+
+    <script>
+        $(document).ready(function(){
+            $("#boton").click(function(){
+                $("#resultado").empty();
+                let url = "https://pokeapi.co/api/v2/pokemon/"
+                let nombre = $("#nombre").val()
+                $.get(url + nombre, function(pokemon){
+                   console.log(pokemon) 
+                   $("#resultado").append(
+                    "<div> id:" + pokemon.id + "</div>"+
+                    "<div> Nombre:" + pokemon.name + "</div>" +
+                    "<div> Tipo: " + pokemon.types[0].type.name +  "</div>" +
+                    "<div> Altura:" + pokemon.height + "</div>" + 
+                    "<img src=" + pokemon.sprites.front_default + " width='200px' height='200px'>" 
+                   )
+                })
+            })
+        })
+    </script>
 </body>
 </html>
