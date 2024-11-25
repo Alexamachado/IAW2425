@@ -1,0 +1,34 @@
+<!-- Utilizando el API de https://jsonplaceholder.typicode.com/ crea un documento HTML
+con jQuery y AJAX que pulsando un botón permita visualizar todos los posts del sitio
+web. -->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 1</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+</head>
+<body>
+    <button id="boton">Traer Posts</button> <br>
+    <p id="todo"></p>
+    <script>
+        $(document).ready(function(){
+            let direccion = "https://jsonplaceholder.typicode.com/"
+            $("#boton").click(function(){
+               $.get(direccion + "posts", function(yo){
+                    console.log(yo)
+                for(let i=0;i<yo.length ; i++){
+                $("#todo").append("<div> Titulo:" + yo[i].title + "</div> <br>" +
+                    "<div> Descripcion:" + yo[i].body + "</div>"
+                )
+                }
+               }) 
+               
+            })
+        })
+    </script>
+</body>
+</html>
+

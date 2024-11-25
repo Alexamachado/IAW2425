@@ -96,15 +96,16 @@ function crear(){
     caja();
     if(nombre()===true && apellidos()===true && dni()===true && email()===true && 
         contrasena()===true && caja()===true){
-        let textonombre = document.getElementById("nombre")
-        let textoapellido1 = document.getElementById("apellido1")
-        let textoapellido2 = document.getElementById("apellido2")
-        let textodni = document.getElementById("dni")
-        let nombri = textonombre.substring(1);
+        let textonombre = document.getElementById("nombre").value
+        let textoapellido1 = document.getElementById("apellido1").value
+        let textoapellido2 = document.getElementById("apellido2").value
+        let textodni = document.getElementById("dni").value
+        let nombri = textonombre.substring(0, 1);
         let apelli1 = textoapellido1.substring(0, 3);
         let apelli2 = textoapellido2.substring(0, 3);
         let dn = textodni.substring(6, 9);
         let todo = nombri + apelli1 + apelli2 + dn;
-        alert("El nombre de tu usuario es: " + todo )
+        let todominuscula = todo.toLowerCase();
+        alert("El nombre de tu usuario es: " + todominuscula)
         }
  }  
