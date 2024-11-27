@@ -20,7 +20,7 @@ de un Pokemon o su número nos muestre información sobre el mismo. -->
             $("#boton").click(function(){
                 $("#resultado").empty();
                 let url = "https://pokeapi.co/api/v2/pokemon/"
-                let nombre = $("#nombre").val()
+                let nombre = $("#nombre").val().toLowerCase()
                 $.get(url + nombre, function(pokemon){
                    console.log(pokemon) 
                    $("#resultado").append(

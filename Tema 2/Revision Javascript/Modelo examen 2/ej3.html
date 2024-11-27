@@ -21,6 +21,14 @@ Nombre, Capital, Población y Bandera.-->
                 $("#respuesta").empty()
                 let url = "https://restcountries.com/v3.1/translation/"
                 let nombre =  $("#pais").val() 
+                /*$.ajax({
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(data){
+                    },
+                    error:function(data){
+                    }
+                    })*/
                 $.get(url + nombre,function(pais){ //name
                     console.log(pais)
                     $("#respuesta").append("<div> Nombre: " + pais[0].translations.spa.common + "</div>" + 
