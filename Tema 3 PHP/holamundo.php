@@ -8,3 +8,6 @@
 	<?php echo "<p>chimpun</p>"; ?>
 </body>
 </html>
+
+<!-- holamundo.php. Realiza un script PHP que utilizando la función echo o print muestre 
+ un mensaje en pantalla con la célebre frase “Hola mundo desde PHP”.-->
