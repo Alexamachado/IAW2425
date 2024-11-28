@@ -1,17 +1,16 @@
 <!doctype html>
 <html>
-<head>
-	<title>Una web con PHP</title>
-</head>
+<head></head>
 <body>
 	<?php
    $txt1 = "Hello";
    $txt2 = " world!";
-   echo $txt1 . $txt2;
+   $mensaje = $txt1 . $txt2 
+   echo "<h1>$mensaje</h1>";
 
    echo "<br>";
    
-   $txt1 .= $txt2;
+   $txt1 .= $txt2; // $cadena1 = $cadena1 . $cadena2
    echo $txt1;
    ?>
 </body>

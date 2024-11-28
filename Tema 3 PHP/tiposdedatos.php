@@ -1,8 +1,6 @@
 <!doctype html>
 <html>
-<head>
-	<title>Una web con PHP</title>
-</head>
+<head></head>
 <body>
 	<?php
     $a = "Hola mundo";
@@ -24,7 +22,7 @@
     echo "<br>";
 
     $e = true; //booleanos
-    $f = false
+    $f = false;
     var_dump($e);
     echo "<br>";
     var_dump($f);
@@ -36,6 +34,7 @@
      ?>
 </body>
 </html>
+
 <!-- tiposdedatos.php. Realiza un script en PHP que muestre información 
  de variables de distintos tipos de datos: enteros, reales, cadenas, 
  booleanas y arrays. Muestra los datos utilizando la función var_dump. -->

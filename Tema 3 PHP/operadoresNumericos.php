@@ -1,25 +1,22 @@
 <!doctype html>
 <html>
-<head>
-	<title>Una web con PHP</title>
-</head>
+<head></head>
 <body>
 	<?php
    $a = 10;  
    $b = 6;
-   echo $a + $b; //suma
-   echo "<br>";
-   $c = -10;  
+   $c = -10; 
+   $d = 7.50;
+   echo "Suma: " . ($a + $b) . "<br>"; //suma  
    echo $c - $b; //resta
-   echo "<br>";
-   $d = 7.50;  
+   echo "<br>";  
    echo $b * $d; //multiplicacion
    echo "<br>";
    echo $a / $d; //division
    echo "<br>";
    echo $a % $b; //Lo que queda de una division
    echo "<br>";
-   echo $a ** $c; //Exponencial
+   echo $a ** $b; //Exponencial
     ?>
 </body>
 </html>

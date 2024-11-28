@@ -1,16 +1,21 @@
 <!doctype html>
 <html>
 <head>
-	<title>Una web con PHP</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-	<h1>Encabezado</h1>
-	<?php
-    $x = "Hola mundo"
-    $y = "desde PHP" 
-    echo "<h1>" $x . "" . $y "</h1>"; ?>
+    <h1> Hola</h1>
+	<?php 
+    $cadena1 = "<p>Hola mundo";
+    $cadena2 = "desde php</p>";
+    echo $cadena1 . $cadena2;
+    echo "$cadena1$cadena2";?> <!-- Se puede poner solamente el php -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 </html>
+
 
 <!-- holamundo3.php. Podemos intercalar nuestros scripts PHP dentro del código HTML. 
  Modifica el código anterior para que el cliente web reciba el mensaje en un 
