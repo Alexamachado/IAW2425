@@ -1,10 +1,7 @@
 <!doctype html>
 <html>
-<head>
-	<title>Una web con PHP</title>
-</head>
+<head></head>
 <body>
-	<h1>Encabezado</h1>
 	<?php
     $image = array("1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg")
     $rando = rand(1, 5);
