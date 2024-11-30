@@ -1,14 +1,11 @@
 <!doctype html>
 <html>
-<head>
-	<title>Una web con PHP</title>
-</head>
+<meta charset="UTF-8">
+<head></head>
 <body>
-	<h1>Encabezado</h1>
-	<?php
-    $x = "Hola mundo"
-    $y = "desde PHP" 
-    echo "<p>" $x . "" . $y "</p>"; ?>
+    <?php  
+    echo(rand("&#128512", "&#128586"));
+    ?>
 </body>
 </html>
 <!-- emoticono.php. Utilizando la función rand de PHP crea un script que muestre un emoticono 

@@ -1,14 +1,12 @@
 <!doctype html>
 <html>
-<head>
-	<title>Una web con PHP</title>
-</head>
+<head></head>
 <body>
-	<h1>Encabezado</h1>
 	<?php
-    $x = "Hola mundo"
-    $y = "desde PHP" 
-    echo "<p>" $x . "" . $y "</p>"; ?>
+    $image= imagecreatetruecolor(400, 400);
+    $color = rand(0x000000, 0xFFFFFF); 
+    imagerectangle($image, 300, 300, 300, 300, $color);
+    ?>
 </body>
 </html>
 <!-- cuadradoColor.php. Investiga la función rand de PHP y 
