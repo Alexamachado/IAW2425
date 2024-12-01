@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Ejercicio 2 - Repaso 2</title>
     <style>
-      .boton-image {
+      .boton-basura {
           background-image: url('iconoPapelera.png');
           background-size: cover;
           width: 65px;
@@ -29,12 +29,12 @@
 
     function imprimirArray(){  
       let longitud = mensajes.length;
-      let i=0, codigoHTML="";
+      let i=0, fullmessage="";
       let icono="<div class='tweet'><img src='iconoTwitter.png'>";
         for (i=0;i<longitud;i++){
-            codigoHTML+=icono+mensajes[i]+" <button class=\"boton-image\" onclick='eliminar(mensajes["+i+"]);''></button><br></div>";
+            fullmessage+= icono + mensajes[i] + "<button class='boton-basura' onclick='eliminar(mensajes["+i+"])'></button><br></div>";
         }
-        document.getElementById("mostrarArray").innerHTML=codigoHTML;
+        document.getElementById("mostrarArray").innerHTML=fullmessage;
     }
     function ordenar(){
       mensajes.sort();

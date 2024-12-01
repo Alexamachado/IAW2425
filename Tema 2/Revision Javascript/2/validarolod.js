@@ -8,14 +8,14 @@ function validar(elementos){
             estanCorrectos = false;
         }  
     }
-   /* if (!validarName()){ //valido correo
+   if (!validarName()){ //valido correo
        // document.getElementById("campo1").innerHTML = "Es necesario poner el nombre";        
         estanCorrectos = false;
     }
     if (!validarApellidos()){ //valido correo
        // document.getElementById("campo2").innerHTML = "Es necesario poner los apellidos";        
         estanCorrectos = false;
-    }  */
+    } 
     if (!validarEmail()){ //valido correo
         document.getElementById("campo3").innerHTML = "Email no válido";        
         estanCorrectos = false;
@@ -34,14 +34,14 @@ function validar(elementos){
 
 function validarName(){
     let nombreOK = true
-    if($("#nombre").val()=='')
+    if(document.getElementById("nombre").value=='')
         nombreOK = false
     return nombreOK;
 }
 
 function validarApellidos(){
     let apellidosOK = true
-    if($("#apellidos").val()=='')
+    if(document.getElementById("apellidos").value=='')
         apellidosOK = false
     return apellidosOK
 }
