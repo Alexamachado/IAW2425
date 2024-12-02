@@ -3,9 +3,10 @@
 <head></head>
 <body>
 	<?php
-    $image = array("1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg")
-    $rando = rand(1, 5);
-    echo "<img src=>" $image[$rando] ">";    // echo "<img src=>" $rando . "" . $y ">"; 
+    $image = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg"];
+    $rando = rand(0, count($image)-1);
+    $fotoaleatoria = $image[$rando];
+    echo "<img src='" . $fotoaleatoria . "'>";    // echo "<img src=>" $rando . "" . $y ">"; 
     ?>
 </body>
 </html>

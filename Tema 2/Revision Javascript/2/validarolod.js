@@ -8,14 +8,14 @@ function validar(elementos){
             estanCorrectos = false;
         }  
     }
-   if (!validarName()){ //valido correo
+   /*if (!validarName()){ //valido correo
        // document.getElementById("campo1").innerHTML = "Es necesario poner el nombre";        
         estanCorrectos = false;
     }
     if (!validarApellidos()){ //valido correo
        // document.getElementById("campo2").innerHTML = "Es necesario poner los apellidos";        
         estanCorrectos = false;
-    } 
+    }*/ 
     if (!validarEmail()){ //valido correo
         document.getElementById("campo3").innerHTML = "Email no válido";        
         estanCorrectos = false;
@@ -95,7 +95,7 @@ function validarDNI(){
     alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)
 }*/
 
-if (estanCorrectos = true){
+if (estanCorrectos=true){
     textonombre = document.getElementById("nombre").innerHTML
     textoapellidos = document.getElementById("apellidos").value
     textotelefonos = document.getElementById("telefono").value
