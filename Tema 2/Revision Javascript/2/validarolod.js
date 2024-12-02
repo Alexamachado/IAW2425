@@ -8,14 +8,14 @@ function validar(elementos){
             estanCorrectos = false;
         }  
     }
-   /*if (!validarName()){ //valido correo
-       // document.getElementById("campo1").innerHTML = "Es necesario poner el nombre";        
+   if (!validarName()){ //valido correo
+       document.getElementById("campo1").innerHTML = "Es necesario poner el nombre";        
         estanCorrectos = false;
     }
     if (!validarApellidos()){ //valido correo
-       // document.getElementById("campo2").innerHTML = "Es necesario poner los apellidos";        
+       document.getElementById("campo2").innerHTML = "Es necesario poner los apellidos";        
         estanCorrectos = false;
-    }*/ 
+    } 
     if (!validarEmail()){ //valido correo
         document.getElementById("campo3").innerHTML = "Email no válido";        
         estanCorrectos = false;
@@ -32,7 +32,7 @@ function validar(elementos){
     return estanCorrectos;
 }
 
-/*function validarName(){
+function validarName(){
     let nombreOK = true
     if(document.getElementById("nombre").value=='')
         nombreOK = false
@@ -44,7 +44,7 @@ function validarApellidos(){
     if(document.getElementById("apellidos").value=='')
         apellidosOK = false
     return apellidosOK
-}*/
+}
 
 function validarEmail(){              
 	var valido;
@@ -64,8 +64,8 @@ function validaPIN(){
     let pinOK = true; //Cumple con los requisitos establecidos 
     let comprobar = /\d{8,8}/;
 // por defecto es true 
-    if (pin1.length<8 || (pin1!=pin2)) //cuando una de las dos sea verdadera, esta mal
-        pinOK = false;
+    if (pin1.length<8 || (pin1!=pin2)){ //cuando una de las dos sea verdadera, esta mal       
+    pinOK=false}
     return pinOK;
 }
 
@@ -84,6 +84,17 @@ function validarDNI(){
 }
 
 
+if (estanCorrectos=true){
+    textonombre = document.getElementById("nombre").value
+    textoapellidos = document.getElementById("apellidos").value
+    textotelefonos = document.getElementById("telefono").value
+    let letrasnombres = textonombre.substring(1, 2);
+    let letrasapellidos = textoapellidos.substring(1, 2);
+    let letrastelefonos = textotelefonos.substring(-3, -1);
+    let nombreusuario = letrasnombres + letrasapellidos + letrastelefonos;
+    alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)
+}
+
 /*function mensaje(){
     textonombre = document.getElementById("nombre").value
     textoapellidos = document.getElementById("apellidos").value
@@ -95,16 +106,6 @@ function validarDNI(){
     alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)
 }*/
 
-if (estanCorrectos=true){
-    textonombre = document.getElementById("nombre").innerHTML
-    textoapellidos = document.getElementById("apellidos").value
-    textotelefonos = document.getElementById("telefono").value
-    let letrasnombres = textonombre.substring(1, 2);
-    let letrasapellidos = textoapellidos.substring(1, 2);
-    let letrastelefonos = textotelefonos.substring(-3, -1);
-    let nombreusuario = letrasnombres + letrasapellidos + letrastelefonos;
-    alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)
-}
 
 /* if($("#nombre").val()==''){
     $("#campo1").text("Rellena este campo")
