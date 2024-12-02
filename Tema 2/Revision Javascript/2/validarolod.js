@@ -32,7 +32,7 @@ function validar(elementos){
     return estanCorrectos;
 }
 
-function validarName(){
+/*function validarName(){
     let nombreOK = true
     if(document.getElementById("nombre").value=='')
         nombreOK = false
@@ -44,7 +44,7 @@ function validarApellidos(){
     if(document.getElementById("apellidos").value=='')
         apellidosOK = false
     return apellidosOK
-}
+}*/
 
 function validarEmail(){              
 	var valido;
