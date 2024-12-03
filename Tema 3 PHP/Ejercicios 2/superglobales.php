@@ -3,14 +3,11 @@
 <head><title> Tabla numeros</title></head>
 <body>
 	<?php
-    $numero = 1; //Empezamos por numero
-    $total = 100; //Llegamos hasta diez
-    echo "<table border='1'>";
-    while ($numero<=$total){ //Mil primeros impares $total*2
-        echo "<tr><td>" . $numero .  "</td></tr>\n"; // \n salto linea
-        $numero +=2; // $numero = $numero + 1; $numero++;
-    }
-    echo "</table>";
+    echo $_SERVER['REMOTE_ADDR'];
+    echo "<br>"
+    echo $_SERVER['HTTP_USER_AGENT'];
+   echo "<br>"
+    echo $_SERVER['REQUEST_URI'];
     ?>
 </body>
 </html>

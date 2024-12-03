@@ -1,14 +1,28 @@
 <!doctype html>
 <html>
-<head><title> Tabla numeros</title></head>
+<head><title> Tabla numeros</title>
+<style>
+       body{
+              background-color: blue
+       }
+       ul{
+              width: 500px;
+              height: 500px;
+              display: flex;
+              justify-content: center;
+              text-align: center;
+              align-items: center;
+       }
+</style>
+</head>
 <body>
 	<?php
-        $diccionario = ["hola"=>"hello", "adios"=>"bye", "masa"=>"table","coche"=>"car",
-                        "bicicleta"=>"bike","ordenador"=>"computer"];
-                     echo "<h1>Diccionario español - ingles </h1>";
+        $mensajes = ["Voy a verme una pelicula al cine","Hoy he ido a comer a washington","La nueva de matrix esta muy guapa",
+                     "Hoy voy a comer macarrones con cebolla", "EL antonio machado es el mejor insti de sevi", "Me he comprado unos pantalones muy guapos"];
+                     echo "<h1>YES TWITTER </h1>";
                      echo "<ul>";
-                     foreach ($diccionario as $palabraespanol => $palabraingles){
-                            echo "<li>$palabraespanol se traduce como $palabraingles</li>";
+                     foreach ($mensajes as $tweets){
+                            echo "<li>$tweets</li>";
                      };
                      echo "</ul>";
     ?>
