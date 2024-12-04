@@ -27,7 +27,8 @@
        function mostrarTweets(){
               foreach ($tweets as $tweet){
                      echo "<div class='tweet-caja'>
-                     <div
+                            <div class='tweet></div>    //FALTA
+                            <div></div>
                      </div>"
               }
        }
