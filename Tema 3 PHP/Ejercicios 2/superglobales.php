@@ -1,13 +1,18 @@
 <!doctype html>
 <html>
-<head><title> Tabla numeros</title></head>
+<head><title> </title></head>
 <body>
 	<?php
-    echo $_SERVER['REMOTE_ADDR'];
+    echo "Te estas conectando desde la IP :" . $_SERVER['REMOTE_ADDR'];
     echo "<br>"
-    echo $_SERVER['HTTP_USER_AGENT'];
+    echo "Tu navegador es :" .  $_SERVER['HTTP_USER_AGENT'];
    echo "<br>"
-    echo $_SERVER['REQUEST_URI'];
+    echo "Vienes de la pagina IP :" .  $_SERVER['HTTP_REFERER'];
+
+    /*<?php   //en index.php
+        echo "<a href='superglobales.php'>Clic</a>
+      ?> <?php phpinfo(); ?>*/
+
     ?>
 </body>
 </html>
