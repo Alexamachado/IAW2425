@@ -17,14 +17,33 @@
 </head>
 <body>
 	<?php
-        $mensajes = ["Voy a verme una pelicula al cine","Hoy he ido a comer a washington","La nueva de matrix esta muy guapa",
+       $tweets = [
+              "asdsa",
+              "fsdaf",
+              "adsad",
+              "asdsada"
+       ];
+       //include "funciones.php  //y metemos la funcion de abajo en este archivo 
+       function mostrarTweets(){
+              foreach ($tweets as $tweet){
+                     echo "<div class='tweet-caja'>
+                     <div
+                     </div>"
+              }
+       }
+
+
+
+mostrarTweets()
+        /*$mensajes = ["Voy a verme una pelicula al cine","Hoy he ido a comer a washington","La nueva de matrix esta muy guapa",
                      "Hoy voy a comer macarrones con cebolla", "EL antonio machado es el mejor insti de sevi", "Me he comprado unos pantalones muy guapos"];
                      echo "<h1>YES TWITTER </h1>";
                      echo "<ul>";
                      foreach ($mensajes as $tweets){
                             echo "<li>$tweets</li>";
                      };
-                     echo "</ul>";
+                     echo "</ul>";*/
+                     
     ?>
 </body>
 </html>
