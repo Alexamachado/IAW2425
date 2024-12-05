@@ -6,10 +6,24 @@
     <title>Triangulo</title>
 </head>
 <body>
+    <form id="formulario" action="triangulo.php">
+        <input type="text" name="numero" id="numero">
+        <input type="submit" value="Enviar">
+    </form>
+
+    
+
     <p>Introduce un numero positivo</p>
     <input type="number" id="introducido"> <button onclick="trinagulo()">Enviar</button>
     <?php
-        function triangulo()   
+        $introducido = "document.getelementb"
+        function triangulo(){
+            foreach ($introducido as $numero){
+                echo "<div></div>"
+                
+            }
+
+        }   
     ?>
 </body>
 </html>
