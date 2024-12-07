@@ -34,15 +34,15 @@ function validar(elementos){
 
 function validarName(){
     let nombreOK = true
-    if(document.getElementById("nombre").value=='')
-        nombreOK = false
+    if(document.getElementById("nombre").value==''){
+        nombreOK = false}
     return nombreOK;
 }
 
 function validarApellidos(){
     let apellidosOK = true
-    if(document.getElementById("apellidos").value=='')
-        apellidosOK = false
+    if(document.getElementById("apellidos").value==''){
+        apellidosOK = false}
     return apellidosOK
 }
 
@@ -62,7 +62,7 @@ function validaPIN(){
     let pin1 = document.getElementById("pin1").value;
     let pin2 = document.getElementById("pin2").value;
     let pinOK = true; //Cumple con los requisitos establecidos 
-    let comprobar = /\d{8,8}/;
+   // let comprobar = /\d{8,8}/;
 // por defecto es true 
     if (pin1.length<8 || (pin1!=pin2)){ //cuando una de las dos sea verdadera, esta mal       
     pinOK=false}
@@ -83,16 +83,16 @@ function validarDNI(){
     return dniValido;
 }
 
-
-if (estanCorrectos=true){
-    textonombre = document.getElementById("nombre").value
+if (estanCorrectos){
+    alert("hola")
+    /*textonombre = document.getElementById("nombre").value
     textoapellidos = document.getElementById("apellidos").value
     textotelefonos = document.getElementById("telefono").value
     let letrasnombres = textonombre.substring(1, 2);
     let letrasapellidos = textoapellidos.substring(1, 2);
     let letrastelefonos = textotelefonos.substring(-3, -1);
     let nombreusuario = letrasnombres + letrasapellidos + letrastelefonos;
-    alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)
+    alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)*/
 }
 
 /*function mensaje(){
