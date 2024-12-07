@@ -4,7 +4,10 @@
 <head></head>
 <body>
     <?php  
-    echo(rand("&#128512", "&#128586"));
+      $caracter = '&#';
+      $emoticono = rand(128512, 128586);
+      $trueemoticono = $caracter . $emoticono;
+      echo $trueemoticono;
     ?>
 </body>
 </html>

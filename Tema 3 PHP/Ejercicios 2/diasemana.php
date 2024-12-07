@@ -1,16 +1,26 @@
-<!doctype html>
-<html>
-<head></head>
-<body>
-	<?php
-    $dias = ["Domingo","Lunes","Martes","Miercoles","Jueves","Viernes","Sábado"];
-    $meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-     
-    echo $dias[date('w')]." ".date('d')." de ".$meses[date('n')-1]. " del ".date('Y') ;
-    ?>
-</body>
-</html>
+<?php
+	$dias = ["Lunes", "Martes", "Miercoles", "Jueves", "Viernes", "Sabado", "Domingo"];
 
-<!-- diasemana.php. Realiza un script PHP que utilizando Date obtenga el día de la 
- semana en el que se encuentra el servidor y en función del mismo muestre 
- un mensaje diferente según sea lunes, martes, miércoles, etc (utiliza switch). -->
+	switch  ($dias[date('w')-1]) {
+	  case "Lunes":
+		echo "Hoy es lunes, toca ir a correr";
+	        break;
+	case "Martes":
+                echo "Hoy es martes, toca comer espaghetis";
+                break;
+	case "Miercoles":
+                echo "Hoy es miercoles, toca cenar curri al aguillo";
+                break;
+	case "Jueves":
+                echo "Hoy es Jueves, toca jugar al pong";
+                break;
+	case "Viernes":
+                echo "Hoy es Viernes, toca ir al gimnasio";
+                break;
+	case "Sabado":
+                echo "Hoy es Sabado, toca leer un libro";
+                break;
+	case "Domingo":
+                echo "Hoy es Domingo, toca estudiar para IAW";
+                break;}
+?>
