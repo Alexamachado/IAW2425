@@ -5,7 +5,7 @@
     <input type="submit" value="Enviar">
 </form>
 <?php
-    if (isset($_POST["nombre"])){
+    if (isset($_POST["nombre"])){   //Con Get se lo lleva
         echo "Hola " . htmlspecialchars($_POST["nombre"]) . " hoy es " . date("d/m/Y");
     }
 

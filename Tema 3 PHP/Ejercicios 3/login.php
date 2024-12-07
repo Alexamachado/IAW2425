@@ -8,17 +8,17 @@
 </head>
 <body>
 <h1> Sistema de autenticacion</h1>
-<form action="login.php" method="POST"></form>
+<form action="login.php" method="POST">
     <input type="text" name="usuario" placeholder="Usuario">
-    <input type="password" value="pass">
+    <input type="password" name="pass">
     <input type="submit" value="Login">
 </form>
 <?php
-    if (isset($_POST["usuario"]) && isset($_POST["pass"]))
+    if (isset($_POST["usuario"]) && isset($_POST["pass"])) 
     {
-        $usuario = htmlspecialchars($_POST["usuario"]);
-        $password = htmlspecialchars($_POST["pass"]);
-         if( $usuario=="admin" && $password=="H4CK3R4$1R") //NO VA
+        $usuario = htmlspecialchars($_POST["usuario"]);      //Para evitar inyeccion codigo
+        $password = htmlspecialchars($_POST["pass"]);       //GET para conseguir informacion, 
+         if( $usuario=="admin" && $password=="H4CK3R4$1R")  //POST para mandarla
               echo "<p>Bienvenido amo</p>";
             else
                 echo "<p>No puedes pasar hacker</p>";
