@@ -3,11 +3,10 @@
 <head><title> Tabla numeros</title></head>
 <body>
 	<?php
-    $numero = 1; //Empezamos por numero
     echo "<table border='1'>";
-    for ($numero=1 ;$numero<=100; $numero++){ //Mil primeros impares $total*2
-        echo "<tr><td>" . $numero .  "</td></tr>\n"; // \n salto linea
-        $numero + 1; //nunca en un for
+    for ($numero=1 ;$numero<=30; $numero++){ 
+        echo "<td>" . $numero .  "</td>"; // \n salto linea
+       // $numero + 1; nunca en un for
     }
     echo "</table>";
     ?>

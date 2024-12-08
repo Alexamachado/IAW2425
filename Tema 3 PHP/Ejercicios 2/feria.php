@@ -3,12 +3,13 @@
 <head></head>
 <body>
 	<?php
-    $fecha = date('Y-m-d');
+    $fecha = date('d-m-Y');
     $fechaactual = date_create($fecha);
     $fechaferia = date_create("06-05-2025");
     $diferencia = date_diff($fechaactual,$fechaferia);
     $differenceformat = '%a';
     echo "Quedan " . $diferencia->format($differenceformat) . " dias"; 
+    //echo $diferencia->format("%a días quedan para la feria!");
     ?>
 </body>
 </html>

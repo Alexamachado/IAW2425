@@ -17,3 +17,5 @@
 <!-- while.php. Utilizando una estructura repetitiva while implementa un 
  script PHP que se encargue de crear una tabla en HTML con todos 
  los números del 1 al 10 dispuestos en una columna.-->
+
+ <!-- Otra forma seria con div y border-style y width-->

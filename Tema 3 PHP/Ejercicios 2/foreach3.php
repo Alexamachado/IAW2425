@@ -8,7 +8,7 @@
        .tweet-caja {
             width: 100%;
             max-width: 500px;
-            margin: 10px auto;
+            margin: 10px auto; /*auto lo manda al centro*/
             padding: 10px;
             border: 1px solid #e1e8ed;
             border-radius: 10px;
@@ -35,12 +35,7 @@
 </head>
 <body>
 	<?php
-       $tweets = [
-              "Este es el primer tweet",
-              "Segundo tweet",
-              "Tercer tweet",
-              "Cuarto tweet"
-       ];
+       $tweets = ["Este es el primer tweet","Segundo tweet","Tercer tweet","Cuarto tweet"];
        //include "funciones.php  //y metemos la funcion de abajo en este archivo 
        function mostrarTweets(){    //mostrarTweets($tweets)
               foreach ($tweets as $tweet){

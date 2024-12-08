@@ -7,8 +7,8 @@
                      A comer", "la clase de IAW estas siendo aburrida"];
                      echo "<ul>";
                      foreach ($nombreArray as $elementoDelArray){
-                            echo "<li>$elementoDelArray</li>";
-                     };
+                            echo "<li>$elementoDelArray</li>"; //se puede poner directamente <li>
+                     };                                // o hacer "<li>" . $xxx . "</li>"
                      echo "</ul>";
     ?>
 </body>
