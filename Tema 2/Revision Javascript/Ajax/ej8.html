@@ -15,9 +15,9 @@
     </div>
     <script>
       $(document).ready(function () {
-        $.get("https://ipapi.co/192.168.1.1/json/").done(function(ip){
+        $.get("https://ipapi.co/192.168.1.1/json/").done(function(cosa){
           $.get("https://ipapi.co/192.168.1.1/country/").done(function(pais){
-            $("#objetivo").text("La dirección publica es: " + ip.ip + "y el pais es: " + pais ) })
+            $("#objetivo").text("La dirección publica es: " + cosa.ip + "y el pais es: " + pais ) })
         }).fail(
           $("#objetivo").text("Ha habido un error, vuelve a recargar la pagina")
         )

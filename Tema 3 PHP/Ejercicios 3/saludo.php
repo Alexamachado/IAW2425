@@ -12,6 +12,7 @@
 ?>
 
 
+
 <!-- saludo.php. Crea un formulario con una simple caja de texto para introducir 
  tu nombre y un botón. Al enviar el formulario el servidor debe reflejar la 
  entrada de datos con un saludo e indicar la fecha: “Hola Ana hoy es 19/12/22”. -->
