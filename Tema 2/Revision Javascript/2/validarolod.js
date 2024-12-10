@@ -84,15 +84,14 @@ function validarDNI(){
 }
 
 if (estanCorrectos){
-    alert("hola")
-    /*textonombre = document.getElementById("nombre").value
+  textonombre = document.getElementById("nombre").value
     textoapellidos = document.getElementById("apellidos").value
     textotelefonos = document.getElementById("telefono").value
     let letrasnombres = textonombre.substring(1, 2);
     let letrasapellidos = textoapellidos.substring(1, 2);
     let letrastelefonos = textotelefonos.substring(-3, -1);
     let nombreusuario = letrasnombres + letrasapellidos + letrastelefonos;
-    alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)*/
+    alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)
 }
 
 /*function mensaje(){
