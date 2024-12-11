@@ -34,9 +34,8 @@
     <script>
        $(document).ready(function(){
         $(".numeroEnlaces").html("El numero de enlaces de enlaces es: " + $("a").length)
-        $(".enlaces").each(function(){ /*Con cada enlace voy a solicitar el tamaño al servidor
-                                        y añadirlo con un append al lado */
-            let that = $(this);
+        $(".enlaces").each(function(){ //Con cada enlace voy a solicitar el tamaño al servidor
+          let that = $(this);          // y añadirlo con un append al lado */
             $.ajax({
             type: "HEAD",                                       
             url: that.attr("href"),             

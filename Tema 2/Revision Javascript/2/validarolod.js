@@ -83,7 +83,7 @@ function validarDNI(){
     return dniValido;
 }
 
-if (estanCorrectos){
+if (estanCorrectos){  //hay que ponerlo fuera o dentro de la funcion
   textonombre = document.getElementById("nombre").value
     textoapellidos = document.getElementById("apellidos").value
     textotelefonos = document.getElementById("telefono").value
