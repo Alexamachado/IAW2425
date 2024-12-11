@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <style>
+        .error{color:red}
+    </style>
+    <script src="formulario.js"></script>
+</head>
+<body>
+   <center> <h1> Formulario</h1> </center>
+   <span> Asunto*: </span> <input type="text" id="asunto"> <span class="error" id="error1" ></span><br>
+   <span> DNI/NIE*: </span> <input type="text" id="dni"> <span class="error" id="error2" ></span><br>
+    <span> Nombre*: </span> <input type="text" id="nombre"> <span class="error" id="error3" ></span><br>
+    <span> Primer Apellido*: </span> <input type="text" id="apellido1"> <span class="error" id="error4" ></span><br>
+    <span> Segundo Apellido: </span> <input type="text" id="apellido2"> <br>
+    <span> Fecha Nacimiento:(dd/mm/yyyy)*: </span> <input type="date" id="fecha"> <span class="error" id="error5" ></span><br>
+    <span> Teléfono de contacto*: </span> <input type="text" id="telefono"> <span class="error" id="error6" ></span><br>
+    <span> Correo Electrónico (para respuesta): </span> <input type="email" id="email"><span class="error" id="error7" ></span><br>
+    <span> Domicilio*: </span> <input type="text" id="domicilio"> <span class="error" id="error8" ></span><br>
+    <span> Codigo Postal*: </span> <input type="text" id="postal"> <span class="error" id="error9" ></span><br>
+    <span> Municipio*: </span> <select name="pais">
+        <option value="0">Selecciona Municipio</option>
+        <option value="41001">Aguadulce</option>
+        <option value="41002">Alanís</option>
+        <option value="41003">Albaida del Aljarafe</option>
+        <option value="41004">Alcalá de Guadaíra</option>
+        <option value="41005">Alcalá del Río</option>
+        <option value="41006">Alcolea del Río</option>
+        <option value="41007">Algaba (La)</option>
+        <option value="41008">Algámitas</option>
+        <option value="41009">Almadén de la Plata</option>
+        <option value="41010">Almensilla</option>
+        <option value="41011">Arahal</option>
+        <option value="41012">Aznalcázar</option>
+        <option value="41013">Aznalcóllar</option>
+        <option value="41014">Badolatosa</option>
+        <option value="41015">Benacazón</option>
+        <option value="41016">Bollullos de la Mitación</option>
+        <option value="41017">Bormujos</option>
+        <option value="41018">Brenes</option>
+        <option value="41019">Burguillos</option>
+        <option value="41020">Cabezas de San Juan (Las)</option>
+        <option value="41021">Camas</option>
+        <option value="41022">Campana (La)</option>
+        <option value="41023">Cantillana</option>
+        <option value="41901">Cañada Rosal</option>
+        <option value="41024">Carmona</option>
+        <option value="41025">Carrión de los Céspedes</option>
+        <option value="41026">Casariche</option>
+        <option value="41027">Castilblanco de los Arroyos</option>
+        <option value="41028">Castilleja de Guzmán</option>
+        <option value="41029">Castilleja de la Cuesta</option>
+        <option value="41030">Castilleja del Campo</option>
+        <option value="41031">Castillo de las Guardas (El)</option>
+        <option value="41032">Cazalla de la Sierra</option>
+        <option value="41033">Constantina</option>
+        <option value="41034">Coria del Río</option>
+        <option value="41035">Coripe</option>
+        <option value="41036">Coronil (El)</option>
+        <option value="41037">Corrales (Los)</option>
+        <option value="41903">Cuervo de Sevilla (El)</option>
+        <option value="41038">Dos Hermanas</option>
+        <option value="41039">Ecija</option>
+        <option value="41040">Espartinas</option>
+        <option value="41041">Estepa</option>
+        <option value="41042">Fuentes de Andalucía</option>
+        <option value="41043">Garrobo (El)</option>
+        <option value="41044">Gelves</option>
+        <option value="41045">Gerena</option>
+        <option value="41046">Gilena</option>
+        <option value="41047">Gines</option>
+        <option value="41048">Guadalcanal</option>
+        <option value="41049">Guillena</option>
+        <option value="41050">Herrera</option>
+        <option value="41051">Huévar del Aljarafe</option>
+        <option value="41902">Isla Mayor</option>
+        <option value="41052">Lantejuela</option>
+        <option value="41053">Lebrija</option>
+        <option value="41054">Lora de Estepa</option>
+        <option value="41055">Lora del Río</option>
+        <option value="41056">Luisiana (La)</option>
+        <option value="41057">Madroño (El)</option>
+        <option value="41058">Mairena del Alcor</option>
+        <option value="41059">Mairena del Aljarafe</option>
+        <option value="41060">Marchena</option>
+        <option value="41061">Marinaleda</option>
+        <option value="41062">Martín de la Jara</option>
+        <option value="41063">Molares (Los)</option>
+        <option value="41064">Montellano</option>
+        <option value="41065">Morón de la Frontera</option>
+        <option value="41066">Navas de la Concepción (Las)</option>
+        <option value="41067">Olivares</option>
+        <option value="41068">Osuna</option>
+        <option value="41069">Palacios y Villafranca (Los)</option>
+        <option value="41904">Palmar de Troya (El)</option>
+        <option value="41070">Palomares del Río</option>
+        <option value="41071">Paradas</option>
+        <option value="41072">Pedrera</option>
+        <option value="41073">Pedroso (El)</option>
+        <option value="41074">Peñaflor</option>
+        <option value="41075">Pilas</option>
+        <option value="41076">Pruna</option>
+        <option value="41077">Puebla de Cazalla (La)</option>
+        <option value="41078">Puebla de los Infantes (La)</option>
+        <option value="41079">Puebla del Río (La)</option>
+        <option value="41080">Real de la Jara (El)</option>
+        <option value="41081">Rinconada (La)</option>
+        <option value="41082">Roda de Andalucía (La)</option>
+        <option value="41083">Ronquillo (El)</option>
+        <option value="41084">Rubio (El)</option>
+        <option value="41085">Salteras</option>
+        <option value="41086">San Juan de Aznalfarache</option>
+        <option value="41088">San Nicolás del Puerto</option>
+        <option value="41087">Sanlúcar la Mayor</option>
+        <option value="41089">Santiponce</option>
+        <option value="41090">Saucejo (El)</option>
+        <option value="41091">Sevilla</option>
+        <option value="41092">Tocina</option>
+        <option value="41093">Tomares</option>
+        <option value="41094">Umbrete</option>
+        <option value="41095">Utrera</option>
+        <option value="41096">Valencina de la Concepción</option>
+        <option value="41097">Villamanrique de la Condesa</option>
+        <option value="41100">Villanueva de San Juan</option>
+        <option value="41098">Villanueva del Ariscal</option>
+        <option value="41099">Villanueva del Río y Minas</option>
+        <option value="41101">Villaverde del Río</option>
+        <option value="41102">Viso del Alcor (El)</option></select> 
+        <span class="error" id="error10" ></span><br> 
+    <span> Oficina*: </span> <select name="oficina">
+		<option value="0">Seleciona oficina</option>
+        <option value="1">oficina 1</option>	
+		<option value="2">oficina 2</option>
+		<option value="3">oficina 3</option>
+		<option value="4">oficina 4</option> </select> 
+    <span class="error" id="error11" ></span><br> 
+    <span> Información requerida*: </span> <textarea id="descripcion" rows="4" cols="50"></textarea><span class="error" id="erro12" ></span><br>
+    <span> Fichero Anexo I (máximo 2MB): </span> <input type="file" id="anexo1"> <br> <span class="error" id="error13" ></span><br>
+    <span> Fichero Anexo II (máximo 2MB): </span> <input type="file" id="anexo2"> <br> <span class="error" id="error14" ></span><br>
+    <span> He leido y acepto la politica de datos y normas de uso*: </span> <input type="checkbox" id="caja"> <span class="error" id="error15" ></span><br>
+    <button onclick="comprobar()">Enviar datos</button>
+</body>
+</html>
+
+
+
