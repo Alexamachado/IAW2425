@@ -1,0 +1,1 @@
+Crear carpeta "uploads" con todos los permisos o con usuario 3w-data????
