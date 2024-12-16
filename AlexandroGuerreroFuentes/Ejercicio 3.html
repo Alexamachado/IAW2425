@@ -1,0 +1,42 @@
+
+
+      <!DOCTYPE html>
+      <html lang="es">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Ejercicio 3</title>
+          <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+      </head>
+      <body>
+          <style>
+                #texto{
+            margin-left: 20px;
+            margin-top: 20px
+        }
+          </style>
+      
+          <script>
+               $(document).ready(function () {
+                  $("#buscar").click(function(){
+                  let gif = $("#texto").val()
+                  $.get("https://api.giphy.com/v1/gifs/search?api_key=qlhEmaHS7V5nIbZQgHZ1t5pPkKF5p2Gk&q="+ gif).done(function(api){
+                     console.log(api)
+                     let gifs=api.data.length;
+                  for (let i=0; i<gifs; i++){
+                      $("#respuesta").append(
+                        "<br>" +    
+                      '<img width="120" src="'+ api.data[i].embed_url +'">'
+                          
+                      )}
+                  })
+              })
+              });
+          </script>
+      
+      <input type="text" id="texto" placeholder="Introduzca nombre gif">
+      <button id="buscar"> Buscar</button>
+      <div id="respuesta"> </div>
+      </body>
+      </html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+    <div> Introduce la masa</div>
+    <input type="number" id="cosa1">
+        <br> <br>
+        <div>Introduce la velocidad </div>
+    <input type="number" id="cosa2">
+    <button onclick="calculatodo()"> Calculo </button>
+
+  <p id="resultado"></p>  <br>
+  <!-- <p id="recomendacion"></p> -->
+    <script>
+        function calculatodo(){
+        let velocidad = parseFloat(document.getElementById("cosa2").value); 
+        let masa = parseFloat(document.getElementById("cosa1").value); 
+        let calculo = 0.5 * masa * velocidad * velocidad;
+        
+        if (calculo < 10){
+            document.getElementById("resultado").innerHTML = "La energia cinetica es baja: " + calculo  + " Joules"
+        }
+        else if (calculo > 100 ){
+            document.getElementById("resultado").innerHTML = "La energia cinetica es alta: " + calculo  + " Joules"
+        }
+        else {
+            document.getElementById("resultado").innerHTML = "La energia cinetica es moderada: " + calculo  + " Joules"
+        }
+
+        if (masa<=0 || velocidad<=0){
+            document.getElementById("resultado").innerHTML = "Tienes que meter un numero positivo y superior a 0"
+        }
+         if (isNaN(masa) || isNaN(velocidad)){
+            document.getElementById("resultado").innerHTML = "Debes rellenar los dos y deben ser numeros positivos mayores de 0"
+        }
+        }
+    </script>
+</body>
+</html>
+
+<!-- Realiza un documento html con JavaScript que permita a partir de dos de cajas de
+texto recibir la información de un usuario sobre su altura en centímetros y masa
+en kilogramos para calcular su índice de masa corporal(IMC). En función del
+resultado obtenido el script mostrará un mensaje en pantalla ofreciendo el
+coeficiente obtenido así como una indicación en base a la siguiente tabla: -->
