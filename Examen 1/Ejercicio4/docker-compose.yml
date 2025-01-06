@@ -1,0 +1,29 @@
+version: '2.2'
+services:
+  web:
+    image: aspendigital/octobercms:latest
+    ports:
+      - "9092:80"
+    environment:
+      - DB_TYPE=mysql
+      - DB_HOST=october
+      - DB_DATABASE=october
+      - DB_USERNAME=root
+      - DB_PASSWORD=someoctober
+    volumes:
+      - octoberdata:/var/www/html
+
+  october:
+    image: mysql:5.7
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=someoctober
+      - MYSQL_DATABASE=october
+    volumes:
+      - mysqldata:/var/lib/mysql
+  
+volumes:
+    mysqldata:
+    octoberdata:
+
