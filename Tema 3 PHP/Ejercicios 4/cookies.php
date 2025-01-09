@@ -1,25 +1,22 @@
 <?php
-// Start the session
-session_start();
+$cookie_name = "user";
+$cookie_value = "John Doe";
+setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
 ?>
-
-<!DOCTYPE html>
 <html>
 <body>
 
 <?php
-// Set session variables
-$_SESSION["favcolor"] = "green";
-$_SESSION["favanimal"] = "cat";
-echo "Se han configurado las variables de sesion.";
+if(!isset($_COOKIE[$cookie_name])) {
+  echo "Cookie named '" . $cookie_name . "' is not set!";
+} else {
+  echo "Cookie '" . $cookie_name . "' is set!<br>";
+  echo "Value is: " . $_COOKIE[$cookie_name];
+}
 ?>
 
 </body>
 </html> 
-
-
-
-
 
 <!-- cookies.php. Crea diferentes cookies y envíalas al cliente, muéstralas 
  por pantalla y verifica su persistencia aún cerrando el navegador. 

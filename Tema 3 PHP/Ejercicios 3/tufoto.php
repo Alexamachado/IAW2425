@@ -19,9 +19,9 @@ if(isset($_POST["submit"])) {
 
 $directorio = "fotitos/";
 $fila = $directorio . basename($_FILES["foto"]["name"]);
-$subida = 1;
-$imageFileType = strtolower(pathinfo($fila, PATHINFO_EXTENSION));
-if (isset($_POST["foto"])){
+//$subida = 1; Para saber si se ha subido antes
+//$imageFileType = strtolower(pathinfo($fila, PATHINFO_EXTENSION)); Para convertirlo a minuscula
+//if (isset($_POST["foto"])){
  $comprobar = getimagesize($_FILES["foto"]["tmp_name"]);
  //set_error_handler("error");
  //$mensajeerror ="Tienes que subir una foto y poner un nombre.";
@@ -41,7 +41,7 @@ if (isset($_POST["foto"])){
  }else{
  echo "Tienes que subir foto y poner un nombre";
  } 
-}
+//}
 ?>
 
 </body>
