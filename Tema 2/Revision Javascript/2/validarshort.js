@@ -29,7 +29,16 @@ function validar(elementos){
         document.getElementById("campo7").innerHTML = "DNI no valido +(12345678X)";        
         estanCorrectos = false;
         }
-    return estanCorrectos;
+    if(estanCorrectos){
+        let textonombre = document.getElementById("nombre").value
+        let textoapellidos = document.getElementById("apellidos").value
+        let textotelefonos = document.getElementById("telefono").value
+        let letrasnombres = textonombre.substring(0, 2);
+        let letrasapellidos = textoapellidos.substring(0, 2);
+        let letrastelefonos = textotelefonos.substring(6, 9);
+        let nombreusuario = letrasnombres + letrasapellidos + letrastelefonos;
+        alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)
+    };
 }
 
 function validarName(){
@@ -83,16 +92,6 @@ function validarDNI(){
     return dniValido;
 }
 
-if (estanCorrectos){  //hay que ponerlo fuera o dentro de la funcion
-  textonombre = document.getElementById("nombre").value
-    textoapellidos = document.getElementById("apellidos").value
-    textotelefonos = document.getElementById("telefono").value
-    let letrasnombres = textonombre.substring(1, 2);
-    let letrasapellidos = textoapellidos.substring(1, 2);
-    let letrastelefonos = textotelefonos.substring(-3, -1);
-    let nombreusuario = letrasnombres + letrasapellidos + letrastelefonos;
-    alert("Enorabuena su usuario ha sido creado correctamente, el nombre de su usuario es: " + nombreusuario)
-}
 
 /*function mensaje(){
     textonombre = document.getElementById("nombre").value

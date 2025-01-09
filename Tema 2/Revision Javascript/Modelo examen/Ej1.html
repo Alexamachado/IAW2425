@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
     <script src="formulario.js"></script>
+    <style>
+        .error{color: red;}
+    </style>
 </head>
 <body>
    <center> <h1> Formulario</h1> </center>
-    <span> Nombre*: </span> <input type="text" id="nombre"> <span id="error1" ></span><br>
-    <span> Primer Apellido*: </span> <input type="text" id="apellido1"> <span id="error2" ></span><br>
-    <span> Segundo Apellido*: </span> <input type="text" id="apellido2"> <span id="error3" ></span><br>
-    <span> DNI*: </span> <input type="text" id="dni"> <span id="error4" ></span><br>
-    <span> Email:* </span> <input type="email" id="email"> <span id="error5" ></span><br>
-    <span> Contraseña*: </span> <input type="password" id="password1"> <span id="error6" ></span><br>
-    <span> Contraseña Repetida*: </span> <input type="password" id="password2"> <span id="error7" ></span><br>
+    <span> Nombre*: </span> <input type="text" id="nombre"> <span class="error" id="campo1" ></span><br>
+    <span> Primer Apellido*: </span> <input type="text" id="apellido1"> <span class="error" id="campo2" ></span><br>
+    <span> Segundo Apellido*: </span> <input type="text" id="apellido2"> <span class="error" id="campo3" ></span><br>
+    <span> DNI*: </span> <input type="text" id="dni"> <span class="error" id="campo4" ></span><br>
+    <span> Email:* </span> <input type="email" id="email"> <span class="error" id="campo5" ></span><br>
+    <span> Contraseña*: </span> <input type="password" id="password1"> <span class="error" id="campo6" ></span><br>
+    <span> Contraseña Repetida*: </span> <input type="password" id="password2"> <span class="error" id="campo7" ></span><br>
     <span> Descripcion: </span> <input type="text" id="descripcion"> <br>
     <span> Fecha Nacimiento: </span> <input type="text" id="fecha"> <br>
-    <span> Acepte la politica de almacenamiento: </span> <input type="checkbox" id="caja"> <span id="error8" ></span><br>
+    <span> Acepte la politica de almacenamiento: </span> <input type="checkbox" id="caja"> <span class="error" id="campo8" ></span><br>
     <button onclick="comprobar()">Enviar datos</button>
 </body>
 </html>
