@@ -8,18 +8,17 @@
 <body>
 
 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
-Ve introduciendo los usuario  <input type="text" name="nombres"><br>
-Añadir usuario<input type="submit" name="anadir"> &nbsp; &nbsp;  Realizar sorteo<input type="submit" name="sorteo">
+Introduce un numero  <input type="text" name="numero"><br>
+Numero random <input type="submit" name="submit">
 </form> 
 
 <?php
-if (isset($_POST["nombres"])){
-$nombres = array($_POST["nombres"]);
-$anadidos = explode(",", $_POST["nombres"]);
-$nombres = array_merge($nombres, $anadidos);
-
-//array_push($nombres, $_POST["nombres"]);
-print_r($nombres);
+if (isset($_POST["submit"])){
+  $numero = htmlspecialchars($_POST["numero"]);
+  if (isset($numero) && $numero>1 && round($numero,0)==$numero){
+	echo "<p>Premio para el número " . rand(1,$numero) . "</p>";
+  }else{
+  echo "<p>Debe introducir un numero positivo mayor que uno</p>";}
 }
 ?>
 </body>
