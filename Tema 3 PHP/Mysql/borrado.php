@@ -9,13 +9,13 @@
       die("Ocurrio un problema con la conexion:" . mysqli_connect_error());
   }
 //Construcción de la Query
-  $query = "UPDATE usuarios SET nombre='Juan', apellido='Perez Lopez' WHERE id=6";
+  $query = "DELETE FROM usuarios WHERE nombre='Alberto'";
 // Ejecución de la Query
   $resultado = mysqli_query($enlace, $query);
   //print_r($resultado);
 // Procesamiento de los resultados
         if($resultado){
-            echo "Registro actualizado correctamente";
+            echo "Borrado realizado correctamente";
         }else{
             echo "Conexión fallida";
         }
