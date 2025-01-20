@@ -1,4 +1,4 @@
-<?php
+<?php             //Mysqli object-oriented
     $servername = "sql308.thsite.top"; //Nombre del servidor
     $username = "thsi_38097488"; //Nombre del usuario
     $password = "xxxxx"; //Contraseña

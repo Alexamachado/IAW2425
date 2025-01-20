@@ -1,4 +1,4 @@
-<?php
+<?php           //Mysqli procedural
 //Conexion con BD 
   $servername = "sql308.thsite.top";
   $username = "thsi_38097488";
