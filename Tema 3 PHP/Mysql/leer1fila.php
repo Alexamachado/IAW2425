@@ -27,3 +27,6 @@
 // Cierre de la conexión
   mysqli_close($enlace);
 ?>
+
+<!-- leer1fila.php. Realiza un script que muestre un registro de la 
+ tabla usuarios. -->

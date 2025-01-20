@@ -36,7 +36,7 @@
     <title>Inicio sesion</title>
 </head>
 <body>
-    <form method="POST" action="login.php">
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre"><br>
         <label for="password">Contraseña:</label>
@@ -45,8 +45,3 @@
     </form>
 </body>
 </html>
-
-<!-- login.php. Realiza un script en PHP que solicite su 
- nombre de usuario y contraseña y lo autentique convenientemente si 
- está dado de alta en la tabla usuarios o muestre un mensaje de 
- error de error en caso contrario. -->

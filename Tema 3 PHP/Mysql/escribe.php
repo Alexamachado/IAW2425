@@ -22,3 +22,6 @@
 // Cierre de la conexión
   mysqli_close($enlace);
 ?>
+
+<!-- escribe.php. Realiza un script en PHP que permita utilizando la 
+ instrucción INSERT de SQL permita añadir un registro a la tabla usuarios. -->

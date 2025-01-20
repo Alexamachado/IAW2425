@@ -22,3 +22,7 @@
 // Cierre de la conexión
   mysqli_close($enlace);
 ?>
+
+<!-- actualiza.php. Realiza un script en PHP que permita actualizar un 
+campo de la tabla usuarios. Puedes utilizar para filtrar, por ejemplo, 
+el campo id. -->

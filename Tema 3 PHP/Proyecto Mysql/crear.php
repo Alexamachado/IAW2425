@@ -1,4 +1,7 @@
+<?php include "templates/header.php"; ?>
+
 <?php
+include 'funciones.php';
 // Conexión a la base de datos
 $servername = "sql308.thsite.top"; // Nombre del servidor
 $username = ""; // Nombre de usuario
@@ -59,12 +62,7 @@ mysqli_close($enlace);
 ?>
 
 <!-- Formulario de registro -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Registro</title>
-</head>
-<body>
+
     <form method="POST" action="registro.php">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre"><br>
@@ -76,16 +74,4 @@ mysqli_close($enlace);
         <input type="password" id="password" name="password"><br>
         <button type="submit">Registrar</button>
     </form>
-</body>
-</html>
-
-<!-- registro.php. Realiza un ejemplo completo de formulario en PHP que permita 
- dar de alta a un usuario con todos sus datos personales. Ten en cuenta que:
-    No podemos dar de alta un usuario que previamente ya existía en la tabla.
-    Los campos no deben estar vacíos y en tal caso el script debe mostrar este “error”.
-    Las entradas de datos deben estar convenientemente saneadas para evitar 
-    inyecciones de código.
-    La contraseña las almacenaremos cifradas.
-    Al finalizar el proceso de registro enviaremos un correo electrónico 
-    al usuario indicando sus datos de registro.
- -->
+<?php include "templates/footer.php"; ?>

@@ -23,3 +23,6 @@
 // Cierre de la conexión
   mysqli_close($enlace);
 ?>
+
+      <!-- anadircolumna.php. Realiza un script PHP que permita añadir un par 
+       de nuevas columnas a la tabla usuarios: fullname y email. -->
