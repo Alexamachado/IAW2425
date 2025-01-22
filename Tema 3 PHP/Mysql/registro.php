@@ -8,7 +8,7 @@ $enlace = mysqli_connect($servername, $username, $password, $database);
 
 // Verificar conexión
 if (!$enlace) {
-    die("Conexión fallida: " . mysqli_connect_error())
+    die("Conexión fallida: " . mysqli_connect_error());
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
