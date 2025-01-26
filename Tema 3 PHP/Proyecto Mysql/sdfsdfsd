@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aplicación CRUD PHP</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <link rel="stylesheet"  
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <style>
+        #cajaacompanantes{
+            vertical-align: top;
+        }
+    </style>
+  </head>
+  <body>
+
+ <form method="POST" action="crear.php">
+        <label for="titulo">titulo:</label>
+        <input type="text" id="titulo" name="titulo"><br>
+        <label for="tipo">tipo:</label>
+        <select name="tipo">
+            <option selected value="0" disable> </option>
+            <option value="1" > extraescolares </option>
+            <option value="2" > complementarias </option>
+        </select> <br>
+        <label for="departamento">departamento:</label>
+        <select name="departamento" id="departamento">
+            <option selected value="depart0" disable></option>
+            <option value="depart1"> Lengua </option>
+            <option value="depart2"> Matemáticas </option>
+            <option value="depart3"> Educacion Física </option>
+            <option value="depart4"> Informatica </option>
+            <option value="depart5"> Física y Quimica </option>
+        </select> <br>
+        <label for="profesor">Profesor responsable:</label>
+        <select name="profesor" id="profesor">
+            <option selected value="0" disable> Selecciona un departamento</option>
+        </select> <br>
+        <label for="trimestre">trimestre:</label>
+        <select name="trimestre">
+            <option selected value="0" disable></option>
+            <option value="1"> 1ºTrimestre </option>
+            <option value="2"> 2ºTrimestre </option>
+            <option value="3"> 3ºTrimestre </option>
+        </select> <br>
+        <label for="fecha_inicio">fecha_inicio:</label>
+        <input type="date" name="fecha_inicio"><br>
+        <label for="fecha_fin">fecha_fin:</label>
+        <input type="date" name="fecha_fin"><br>
+        <label for="hora_inicio">hora_inicio:</label>
+        <select name="hora_inicio">
+            <option selected value="0" disable></option>
+            <option value="1"> 15:30 </option>
+            <option value="2"> 16:30 </option>
+            <option value="3"> 17:30 </option>
+            <option value="4"> 18:15 </option>
+        </select> <br>
+        <label for="hora_fin">hora_fin:</label>
+        <select name="hora_fin">
+            <option selected value="0" disable></option>
+            <option value="1"> 16:15 </option>
+            <option value="2"> 17:15 </option>
+            <option value="3"> 19:15 </option>
+        </select> <br>
+        <label for="organizador">organizador:</label>
+         <select name="organizador" id="organizador">
+            <option selected value="0" disable> Selecciona un departamento</option>
+        </select> <br>
+        <label for="acompanantes" id="cajaacompanantes">acompañantes:</label>
+        <textarea name="acompanantes"></textarea><br>
+        <label for="ubicacion">ubicacion:</label>
+        <select name="ubicacion">
+            <option selected value="0" disable></option>
+            <option value="1"> Gimnasio </option>
+            <option value="2"> Aula informatica </option>
+            <option value="3"> Aula 104 </option>
+            <option value="4"> Biblioteca </option>
+        </select> <br>
+        <label for="coste">Coste:</label>
+        <input type="number" name="coste"><br>
+        <label for="Talumnos">Total alumnos:</label>
+        <input type="number" name="Talumnos"><br>
+        <label for="Objetivo">Objetivo:</label>
+        <input type="text" name="objetivo"><br>
+        <button type="submit">Crear actividad</button>
+    </form>
+
+    <script>
+    $(document).ready(function () {
+           $("#departamento").change(function () {
+                var valor = $(this).val();
+                if (valor == "depart1") {
+            $("#profesor").html("<option selected value="0" disable> Selecciona un profesor</option> <option value='1'>Francisco Javier Garcia</option> <option value='2'>Rocio Macgire</option> <option value='3'>Mariano Gimenez Santi</option>");
+        } else if (valor == "depart2") {
+             $("#profesor").html(
+                "<option selected value="0" disable> Selecciona un profesor</option> 
+                 <option value='1'>Mario Barbaroja</option>
+                 <option value='2'>Gloria Buenafuentes</option>");
+        } else if (valor == "depart3") {
+             $("#profesor").html(
+                "<option selected value="0" disable> Selecciona un profesor</option> 
+                 <option value='1'>Carlos Manuel Vivagua</option>
+                 <option value='2'>John Comepiedras</option>");
+        } else if (valor == "depart4") {
+             $("#profesor").html(
+                "<option selected value="0" disable> Selecciona un profesor</option> 
+                 <option value='1'>Maria Fuentes Ortiz</option>
+                 <option value='2'>Isabel Ruiz Pilar</option>
+                 <option value='3'>Juan Dominguez Buenaventura</option>");
+        } else if (valor == "depart5") {
+             $("#profesor").html(
+                "<option selected value="0" disable> Selecciona un profesor</option> 
+                 <option value='1'>Luz Benites Torres</option>
+                 <option value='2'>Bernat Dacosta</option>");
+    });
+    });
+
+
+      /*  function functdepartamento(prefijo,seleccion) {
+            var opcionelegida = (seleccion.options[seleccion.selectedIndex].value)
+
+                if (opcionelegida = "1"){
+                    var cosa = document.
+                }
+  var x = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = "You selected: " + x;*/
+}
+    </script>
+</body>
+</html>

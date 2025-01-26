@@ -1,8 +1,8 @@
-<?php         //Mysqli procedural
-//Conexion con BD 
+<?php         
+session_start(); 
   $servername = "sql308.thsite.top";
   $username = "thsi_38097488";
-  $password = "xxxx";
+  $password = "!?TD4GUr";
   $dbname = "thsi_38097488_ejemplo";
   $enlace = mysqli_connect($servername,$username,$password,$dbname);
   if (!$enlace){
@@ -21,9 +21,14 @@
     $query = "SELECT id FROM usuarios WHERE nombre='$nombre' AND contrasena='$password'";
     $resultado = mysqli_query($enlace, $query);
     if (mysqli_num_rows($resultado) > 0){  //Al menos tengo un registro
-            echo "Ha iniciado sesion";
-        }else{
-            echo "No existe el usuario";
+            if ($nombre=="joseluisnunez" || $nombre=="vicedirector" || $nombre=="extraescolares") {   
+                $_SESSION['nombre'] = "$nombre";  
+            header("Location: index.php");
+            } else {
+                echo "Este usuario no tiene los permisos para iniciar sesion";
+            }
+    }else{
+        echo "No existe el usuario";
         }
 }
 // Cierre de la conexión
@@ -36,12 +41,12 @@
     <title>Inicio sesion</title>
 </head>
 <body>
-    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+    <form method="POST" action="login.php">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre"><br>
         <label for="password">Contraseña:</label>
         <input type="password" id="password" name="password"><br>
-        <button type="submit">Registrar</button>
+        <button type="submit">Iniciar sesion</button>
     </form>
 </body>
 </html>

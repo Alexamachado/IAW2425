@@ -8,6 +8,9 @@
         .error {
             color: red;
         }
+        #cajatexto{
+            vertical-align: top;
+        }
     </style>
 </head>
 <body>
@@ -137,7 +140,7 @@
         <option value="3"> Oficina 3 </option>
         <option value="4"> Oficina 4 </option> 
         </select> <span class="error" id="campo12"></span><br>
-    <span>Información requerida*:</span> <br> <textarea id="requerido" rows="8" cols="30"> </textarea> <span class="error" id="campo13"></span><br><br>
+    <span id="cajatexto">Información requerida*:</span>  <textarea id="requerido" rows="8" cols="30"> </textarea> <span class="error" id="campo13"></span><br><br>
     <span>Fichero Anexo I (máximo 2MB):</span> <input type="file" id="anexo1" maxsize="2MB"> <span class="error" id="campo14"></span><br>
     <span>Fichero Anexo II (máximo 2MB):</span> <input type="file" id="anexo2" maxsize="2MB"> <span class="error" id="campo15"></span><br> <br>
     <input type="checkbox" id="caja"><span>He leido y acepto la política de datos y normas de uso</span>  <span class="error" id="campo16"></span> <br>
