@@ -58,7 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 mysqli_close($enlace);
 ?>
 
-<!-- Formulario de registro -->
+<!-- Formulario de registro. -->
 <!DOCTYPE html>
 <html>
 <head>

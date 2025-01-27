@@ -2,7 +2,7 @@
 session_start(); 
   $servername = "sql308.thsite.top";
   $username = "thsi_38097488";
-  $password = "!?TD4GUr";
+  $password = "xxxx";
   $dbname = "thsi_38097488_ejemplo";
   $enlace = mysqli_connect($servername,$username,$password,$dbname);
   if (!$enlace){

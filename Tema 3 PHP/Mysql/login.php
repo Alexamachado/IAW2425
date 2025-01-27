@@ -26,7 +26,7 @@
             echo "No existe el usuario";
         }
 }
-// Cierre de la conexión
+// Cierre de la conexiónd
   mysqli_close($enlace);
 ?>
 

@@ -2,7 +2,7 @@
 //Conexion con BD 
   $servername = "sql308.thsite.top";
   $username = "thsi_38097488";
-  $password = "!?TD4GUr";
+  $password = "xxxx";
   $dbname = "thsi_38097488_ejemplo";
   $enlace = mysqli_connect($servername,$username,$password,$dbname);
   if (!$enlace){
@@ -14,11 +14,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($titulo)){
         $result = "Tienes que elegir una actividad";
     }
-  
-//Construcción de la Query
+  $queryfirst = "SELECT titulo FROM actividad WHERE titulo='$titulo'";
   $query = "DELETE FROM actividad WHERE titulo='$titulo'";
-  $resultado = mysqli_query($enlace, $query);
-        if($resultado){
+  $resultado = mysqli_query($enlace, $queryfirst);
+          if (mysqli_num_rows($resultado) > 0){
+            mysqli_query($enlace, $query);
             $result = "Borrado realizado correctamente";
         } else {
             $result = "La actividad no existe";
@@ -43,10 +43,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <h2> Borrado de actividades </h2>
  <form method="POST" action="borrado.php">
         <label for="borrado">Introduce titulo actividad:</label>
-        <input type="text"  name="borrado">
+        <input type="text" name="borrado">
         <button type="submit">Borrar actividad</button> <br>
-
-    <?php echo $result ?>
     </form>
+    <?php echo $result ?>
 </body>
 </html>
