@@ -2,7 +2,7 @@
 session_start(); 
   $servername = "sql308.thsite.top";
   $username = "thsi_38097488";
-  $password = "xxxx";
+  $password = "xxxxxx";
   $dbname = "thsi_38097488_ejemplo";
   $enlace = mysqli_connect($servername,$username,$password,$dbname);
   if (!$enlace){
@@ -18,15 +18,17 @@ session_start();
     $nombre = htmlspecialchars(trim($_POST['nombre']));
     $password = htmlspecialchars(trim($_POST['password']));
     // Verificar si el usuario existe
-    $query = "SELECT id FROM usuarios WHERE nombre='$nombre' AND contrasena='$password'";
+    $query = "SELECT id, rol FROM usuarios WHERE nombre='$nombre' AND contrasena='$password'";
     $resultado = mysqli_query($enlace, $query);
     if (mysqli_num_rows($resultado) > 0){  //Al menos tengo un registro
-            if ($nombre=="joseluisnunez" || $nombre=="vicedirector" || $nombre=="extraescolares") {   
-                $_SESSION['nombre'] = "$nombre";  
+    $fila = mysqli_fetch_assoc($resultado);
+            //if ($fila["id"]) {   
+                $_SESSION['nombre'] = "$nombre";
+                $_SESSION['rol'] = $fila['rol'];
             header("Location: index.php");
-            } else {
+            /*} else {
                 echo "Este usuario no tiene los permisos para iniciar sesion";
-            }
+            }*/
     }else{
         echo "No existe el usuario";
         }

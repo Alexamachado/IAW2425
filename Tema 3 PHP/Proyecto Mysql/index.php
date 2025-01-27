@@ -47,16 +47,24 @@ session_start();
 
 <div class="contenedor2">
   <ul>
-
-  <li><a class="secciones" href="http://alexguerrero.is-great.net/ProyectoMysql/actualiza.php"> Actualizacion de actividades </a> </li>
+  
+  <li><a class="secciones" <?php if ($_SESSION['rol'] == "Administrador"){ echo "href='http://alexguerrero.is-great.net/ProyectoMysql/actualiza.php'"; } else { echo "onclick='invalidar()' href=''" ;} ?> > Actualizacion de actividades </a> </li>
 
     <?php include 'leer.php';?>
  
 
-  <li> <a class="secciones" href="http://alexguerrero.is-great.net/ProyectoMysql/borrado.php"> Borrado de usuarios </a> </li>
+  <li> <a class="secciones" <?php if ($_SESSION['rol'] != "Administrador"){ echo "href='http://alexguerrero.is-great.net/ProyectoMysql/borrado.php'"; } else { echo "onclick='invalidar()' href=''" ;} ?>> Borrado de usuarios </a> </li>
   </ul>
 </div>
 
+--<script>
+ function invalidar() {
+alert("No tienes los privilegios necesarios para realizar la accion");
 
+}
+</script>
+<?php // if ($_SESSION['rol'] != "Nprivilegiado"){Alert("No tinenes los privilegios necesarios para realizar la accion");?> 
+
+$("#profesor").html("<option selected value='0' disabled> Selecciona un profesor</option> <option value='1'>Francisco Javier Garcia</option>
 </body>
 </html>
