@@ -5,46 +5,36 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Aplicación CRUD PHP</title>
+    <title>Pagina inicio | Management Machado</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <style>
-        a:hover{
-            color:rgb(28, 134, 221);
-        }
-        a{
-            color:black;
-            text-decoration:none;
-        }
-        .secciones{
-            font-family:verdana;
-            out
-        }
-        .contenedor2 {
-            max-width: 1170px; 
+        .contenedor {
+            max-width: 800px; 
             margin-left: auto;
             margin-right: auto;
             padding: 1em;
-        }
-        ul {
+            font-family:verdana;
             border: 2px solid lightgray;
-            list-style: none; /* Elimino los puntos */
-
+            align-content: center;
+            justify-content: center;
+            text-align: center;
+        }
+        body {
+            padding: 2em;
         }
     </style>
     
   </head>
   <body>
 
-<div class="contendor1">
+<div class="contenedor">
     <h2> Bienvenido a la administracion del machado  </h2>
+    <br>
+     <button onclick="window.location='login.php';">Iniciar sesion</button> &nbsp;
+  <button onclick="window.location='registrar.php';">Registrarse como nuevo usuario</button>
 </div>
 
-<div class="contenedor2">
-  <button onclick="window.location='login.php';">Iniciar sesion</button>
-  <button onclick="window.location='registrar.php';">Registrarse como nuevo usuario</button>
-  </ul>
-</div>
 
 
 </body>

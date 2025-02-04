@@ -1,19 +1,10 @@
 <?php
-// Conexión a la base de datos
-$servername = "sql308.thsite.top"; // Nombre del servidor
-$username = "thsi_38097488"; // Nombre de usuario
-$password = "xxxx"; // Contrasena
-$dbname = "thsi_38097488_ejemplo";
-$enlace = mysqli_connect($servername, $username, $password, $dbname);
+session_start(); 
+if (!isset($_SESSION['sesion'])) { header("Location: inicio.php");}
+include('templates/conexion.php');
 
-// Verificar conexión
-if (!$enlace) {
-    die("Conexión fallida: " . mysqli_connect_error());
-}
-
-$estado=""
+$estado=$tipo=$departamento=$profesor=$trimestre=$hora_inicio=$hora_fin=$organizador=$ubicacion="";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    
     $titulo = htmlspecialchars(trim($_POST['titulo']));
     $tipo = $_POST['tipo'];
     $departamento = $_POST['departamento'];
@@ -29,33 +20,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $coste = htmlspecialchars(trim($_POST['coste']));
     $Talumnos = htmlspecialchars(trim($_POST['Talumnos']));
     $objetivo = htmlspecialchars(trim($_POST['objetivo']));
-
     if (empty($titulo) || $tipo == "0" || $departamento == "0" || $profesor == "0" || empty($trimestre)
        || empty($fecha_inicio) || empty($fecha_fin) || empty($hora_inicio) || empty($hora_fin)
        || $organizador == "0" || empty($acompanantes) || $ubicacion == "0" || empty($coste) 
        || empty($Talumnos) || empty($objetivo)) {
-        die("Error: Todos los campos son obligatorios.");
-    }
-
-    // Verificar si la actividad ya existe
-    $query = "SELECT titulo FROM actividad WHERE titulo='$titulo'";
-    $resultado = mysqli_query($enlace, $query);
-
-    if (mysqli_num_rows($resultado) > 0) {
-        echo "<p>Error: Ya hay una actividad creada.</p>";
-    }
-    else{
-        $query = "INSERT INTO actividad (titulo, id_tipo, id_departamento, id_profesor_responsable, trimestre, 
-        fecha_inicio, hora_inicio, fecha_fin, hora_fin, id_organizador, acompanantes, id_ubicacion, coste, total_alumnos, objetivo ) VALUES ('$titulo', '$tipo', '$departamento', '$profesor','$trimestre', '$fecha_inicio', '$hora_inicio', '$fecha_fin', '$hora_fin', '$organizador', '$acompanantes', '$ubicacion', '$coste', '$Talumnos', '$objetivo'   )";
-        if (mysqli_query($enlace, $query)) {
+        $estado = "Error: Todos los campos son obligatorios.";
+    } else {
+        $date1 = date_create_from_format('d/m/Y', $fecha_inicio);
+        $date2 = date_create_from_format('d/m/Y', $fecha_fin);
+        $query = "SELECT titulo FROM actividad WHERE titulo='$titulo'";
+        $resultado = mysqli_query($enlace, $query);
+        if (mysqli_num_rows($resultado) > 0) {
+            echo "<p>Error: Ya hay una actividad creada.</p>";
+        }
+        else if ($date1 > $date2){
+            $estado = "Las fechas estan mal introducidas"; 
+        }
+        else{
+            $query = "INSERT INTO actividad (titulo, id_tipo, id_departamento, id_profesor_responsable, trimestre, fecha_inicio, hora_inicio, fecha_fin, hora_fin, id_organizador, acompanantes, id_ubicacion, coste, total_alumnos, objetivo ) VALUES ('$titulo', '$tipo', '$departamento', '$profesor','$trimestre', '$fecha_inicio', '$hora_inicio', '$fecha_fin', '$hora_fin', '$organizador', '$acompanantes', '$ubicacion', '$coste', '$Talumnos', '$objetivo'   )";
+            if (mysqli_query($enlace, $query)) {
             // Enviar correo electrónico de confirmación
             $estado = "Actividad insertada exitosamente";
-        } else {
+            } else {
             $estado = "Error al insertar actividad";
+            }
         }
     }
 }
-
 mysqli_close($enlace);
 ?>
 <!DOCTYPE html>
@@ -64,30 +55,36 @@ mysqli_close($enlace);
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Aplicación CRUD PHP</title>
+    <title>Creación actividad | Management Machado</title>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+       <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet"  
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
     <style>
         #cajatextarea{
             vertical-align: top;
         }
+     body {
+            padding: 1em;
+        }
     </style>
   </head>
   <body>
-
- <form method="POST" action="crear.php">
+<h2> Creacion de actividades </h2>
+ <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <label for="titulo">titulo:</label>
         <input type="text" name="titulo"><br>
         <label for="tipo">tipo:</label>
         <select name="tipo">
             <option selected value="0" disabled> </option>
-            <option value="1" > extraescolar </option>
-            <option value="2" > complementaria </option>
+            <option value="1" > Extraescolar </option>
+            <option value="2" > Complementaria </option>
         </select> <br>
         <label for="departamento">departamento:</label>
         <select name="departamento" id="departamento">
-            <option selected value="depart0" disabled></option>
+            <option selected value="0" disabled></option>
             <option value="1"> Lengua </option>
             <option value="2"> Matemáticas </option>
             <option value="3"> Educacion Física </option>
@@ -106,23 +103,20 @@ mysqli_close($enlace);
             <option value="3"> 3ºTrimestre </option>
         </select> <br>
         <label for="fecha_inicio">fecha_inicio:</label>
-        <input type="date" name="fecha_inicio"><br>
+        <input id="fecha_inicio" name="fecha_inicio" readonly='true'><br>
         <label for="fecha_fin">fecha_fin:</label>
-        <input type="date" name="fecha_fin"><br>
+        <input id="fecha_fin" name="fecha_fin" readonly='true'><br>
         <label for="hora_inicio">hora_inicio:</label>
-        <select name="hora_inicio">
+        <select name="hora_inicio" id="hora_inicio">
             <option selected value="0" disabled></option>
-            <option value="1"> 15:30 </option>
-            <option value="2"> 16:30 </option>
-            <option value="3"> 17:30 </option>
-            <option value="4"> 18:15 </option>
+            <option value="15:30"> 15:30 </option>
+            <option value="16:30"> 16:30 </option>
+            <option value="17:30"> 17:30 </option>
+            <option value="18:15"> 18:15 </option>
         </select> <br>
         <label for="hora_fin">hora_fin:</label>
-        <select name="hora_fin">
-            <option selected value="0" disabled></option>
-            <option value="1"> 16:15 </option>
-            <option value="2"> 17:15 </option>
-            <option value="3"> 19:15 </option>
+        <select name="hora_fin" id="hora_fin">
+            <option selected value="0" disabled>Selecciona hora inicio</option>
         </select> <br>
         <label for="organizador">organizador:</label>
          <select name="organizador" id="organizador">
@@ -145,27 +139,64 @@ mysqli_close($enlace);
         <label for="objetivo" id="cajatextarea">Objetivo:</label>
         <textarea name="objetivo"></textarea><br>
         <button type="submit">Crear actividad</button>
-    </form>
+    </form> <br>
       <?php echo $estado ?>
+      <br> <br> 
+    <button onclick="location.href = 'index.php';">Volver a la pagina principal</button>
     <script>
+    $.datepicker.regional['es'] = {
+                closeText: 'Cerrar',
+                prevText: '<Ant',
+                nextText: 'Sig>',
+                currentText: 'Hoy',
+                monthNames: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'],
+                monthNamesShort: ['Ene','Feb','Mar','Abr', 'May','Jun','Jul','Ago','Sep', 'Oct','Nov','Dic'],
+                dayNames: ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+                dayNamesShort: ['Dom','Lun','Mar','Mié','Juv','Vie','Sáb'],
+                dayNamesMin: ['Do','Lu','Ma','Mi','Ju','Vi','Sá'],
+                weekHeader: 'Sm',
+                dateFormat: "dd/mm/yy", //"DD dd 'de' MM",
+                firstDay: 1,
+                isRTL: false,
+                minDate: "+1D", maxDate: "+3M",
+                showMonthAfterYear: false,
+                yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['es']);
     $(document).ready(function () {
+        $("#fecha_inicio").datepicker()
+        $("#fecha_fin").datepicker()
+
+            
+           $("#hora_inicio").change(function () {
+                var hora = $(this).val();
+                if (hora == "15:30") {
+            $("#hora_fin").html("<option selected value='0' disabled></option> <option value='16:15'>16:15</option> <option value='17:15'>17:15</option>");
+        } else if (hora == "16:30") {
+             $("#hora_fin").html("<option selected value='0' disabled></option> <option value='17:15'>17:15</option><option value='18:45'>18:45</option>");
+        } else if (hora == "17:30") {
+             $("#hora_fin").html("<option selected value='0' disabled></option> <option value='18:45'>18:45</option><option value='19:15'>19:15</option>");
+        } else if (hora == "18:15") {
+             $("#hora_fin").html("<option value='19:15'>19:15</option>");
+        }});
+
            $("#departamento").change(function () {
                 var valor = $(this).val();
                 if (valor == "1") {
             $("#profesor").html("<option selected value='0' disabled> Selecciona un profesor</option> <option value='1'>Francisco Javier Garcia</option> <option value='2'>Rocio Macgire</option> <option value='3'>Mariano Gimenez Santi</option>");
              $("#organizador").html("<option selected value='0' disabled> Selecciona un organizador</option> <option value='1'>Francisco Javier Garcia</option>");
         } else if (valor == "2") {
-             $("#profesor").html("<option selected value='0' disabled> Selecciona un profesor</option> <option value='1'>Mario Barbaroja</option><option value='2'>Gloria Buenafuentes</option>");
-             $("#organizador").html("<option selected value='0' disabled> Selecciona un organizador</option> <option value='1'>Mario Barbaroja</option>");
+             $("#profesor").html("<option selected value='0' disabled> Selecciona un profesor</option> <option value='4'>Mario Barbaroja</option><option value='5'>Gloria Buenafuentes</option>");
+             $("#organizador").html("<option selected value='0' disabled> Selecciona un organizador</option> <option value='2'>Mario Barbaroja</option>");
         } else if (valor == "3") {
-             $("#profesor").html("<option selected value='0' disabled> Selecciona un profesor</option> <option value='1'>Carlos Manuel Vivagua</option><option value='2'>John Comepiedras</option>");
-             $("#organizador").html("<option selected value='0' disabled> Selecciona un organizador</option> <option value='1'>Carlos Manuel Vivagua</option>");
+             $("#profesor").html("<option selected value='0' disabled> Selecciona un profesor</option> <option value='6'>Carlos Manuel Vivagua</option><option value='7'>John Comepiedras</option>");
+             $("#organizador").html("<option selected value='0' disabled> Selecciona un organizador</option> <option value='3'>Carlos Manuel Vivagua</option>");
         } else if (valor == "4") {
-             $("#profesor").html("<option selected value='0' disabled> Selecciona un profesor</option> <option value='1'>Maria Fuentes Ortiz</option><option value='2'>Isabel Ruiz Pilar</option><option value='3'>Juan Dominguez Buenaventura</option>");
-             $("#organizador").html("<option selected value='0' disabled> Selecciona un organizador</option> <option value='1'>Maria Fuentes Ortiz</option><option value='2'>Isabel Ruiz Pilar</option>");
+             $("#profesor").html("<option selected value='0' disabled> Selecciona un profesor</option> <option value='8'>Maria Fuentes Ortiz</option><option value='9'>Isabel Ruiz Pilar</option><option value='10'>Juan Dominguez Buenaventura</option>");
+             $("#organizador").html("<option selected value='0' disabled> Selecciona un organizador</option> <option value='4'>Maria Fuentes Ortiz</option><option value='5'>Isabel Ruiz Pilar</option>");
         } else if (valor == "5") {
-             $("#profesor").html("<option selected value='0' disabled> Selecciona un profesor</option> <option value='1'>Luz Benites Torres</option><option value='2'>Bernat Dacosta</option>");
-             $("#organizador").html("<option selected value='0' disabled> Selecciona un organizador</option> <option value='1'>Luz Benites Torres</option>");
+             $("#profesor").html("<option selected value='0' disabled> Selecciona un profesor</option> <option value='11'>Luz Benites Torres</option><option value='12'>Bernat Dacosta</option>");
+             $("#organizador").html("<option selected value='0' disabled> Selecciona un organizador</option> <option value='6'>Luz Benites Torres</option>");
     }});
     });
 
