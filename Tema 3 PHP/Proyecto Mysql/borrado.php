@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-if (!isset($_SESSION['sesion'])) { header("Location: inicio.php");}
+if (!isset($_SESSION['sesion']) || $_SESSION['rol'] != "Administrador" ) { header("Location: inicio.php");}
  include('templates/conexion.php');
  
   $result = "";

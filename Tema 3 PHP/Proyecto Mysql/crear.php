@@ -37,7 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $estado = "Las fechas estan mal introducidas"; 
         }
         else{
-            $query = "INSERT INTO actividad (titulo, id_tipo, id_departamento, id_profesor_responsable, trimestre, fecha_inicio, hora_inicio, fecha_fin, hora_fin, id_organizador, acompanantes, id_ubicacion, coste, total_alumnos, objetivo ) VALUES ('$titulo', '$tipo', '$departamento', '$profesor','$trimestre', '$fecha_inicio', '$hora_inicio', '$fecha_fin', '$hora_fin', '$organizador', '$acompanantes', '$ubicacion', '$coste', '$Talumnos', '$objetivo'   )";
+            $query = "INSERT INTO actividad (titulo, id_tipo, id_departamento, id_profesor_responsable, trimestre, fecha_inicio, hora_inicio, fecha_fin, hora_fin, id_organizador, acompanantes, id_ubicacion, coste, total_alumnos, objetivo, aprobada ) VALUES ('$titulo', '$tipo', '$departamento', '$profesor','$trimestre', '$fecha_inicio', '$hora_inicio', '$fecha_fin', '$hora_fin', '$organizador', '$acompanantes', '$ubicacion', '$coste', '$Talumnos', '$objetivo', 'No'   )";
             if (mysqli_query($enlace, $query)) {
             // Enviar correo electrónico de confirmación
             $estado = "Actividad insertada exitosamente";

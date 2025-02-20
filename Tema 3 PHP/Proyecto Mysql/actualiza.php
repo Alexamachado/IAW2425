@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-if (!isset($_SESSION['sesion'])) { header("Location: inicio.php");}
+if (!isset($_SESSION['sesion']) || $_SESSION['rol'] != "Administrador" ) { header("Location: inicio.php");}
 include('templates/conexion.php');
  $showDivFlag=false;
  $actualizacion=$accion="";
@@ -48,6 +48,7 @@ if (isset($_POST["buscaractividad"])) {
             $bcoste = $fila["coste"];
             $btalumnos = $fila["total_alumnos"];
             $bobjetivo = $fila["objetivo"];
+            $baprobada = $fila["aprobada"];
         }
 
     }
@@ -72,12 +73,15 @@ if (isset($_POST["actualizaractividad"])) {
     $coste = htmlspecialchars(trim($_POST['coste']));
     $Talumnos = htmlspecialchars(trim($_POST['Talumnos']));
     $objetivo = htmlspecialchars(trim($_POST['objetivo']));
+    $aprobada = $_POST['aprobada'];
      $date1 = date_create_from_format('d/m/Y', $fecha_inicio);
     $date2 = date_create_from_format('d/m/Y', $fecha_fin);
      if ($date1 > $date2){
             $actualizacion = "Las fechas estan mal introducidas"; 
+        } else if ($Talumnos < 0){
+            $actualizacion = "El numero de alumnos no puede ser negativo"; 
         } else {
-    $query = "UPDATE actividad SET titulo='$titulo', id_tipo='$tipo', id_departamento='$departamento', id_profesor_responsable='$profesor', trimestre='$trimestre', fecha_inicio='$fecha_inicio', hora_inicio='$hora_inicio', fecha_fin='$fecha_fin', hora_fin='$hora_fin', id_organizador='$organizador', acompanantes='$acompanantes', id_ubicacion='$ubicacion', coste='$coste', total_alumnos='$Talumnos', objetivo='$objetivo' WHERE titulo='$Bactividad'";
+    $query = "UPDATE actividad SET titulo='$titulo', id_tipo='$tipo', id_departamento='$departamento', id_profesor_responsable='$profesor', trimestre='$trimestre', fecha_inicio='$fecha_inicio', hora_inicio='$hora_inicio', fecha_fin='$fecha_fin', hora_fin='$hora_fin', id_organizador='$organizador', acompanantes='$acompanantes', id_ubicacion='$ubicacion', coste='$coste', total_alumnos='$Talumnos', objetivo='$objetivo', aprobada='$aprobada' WHERE titulo='$Bactividad'";
             $resultado = mysqli_query($enlace, $query);
             if ($resultado) {
                 $actualizacion = "Actividad Actualizada exitosamente";
@@ -177,6 +181,11 @@ if (isset($_POST["actualizaractividad"])) {
         <input type="number" name="Talumnos" value="<?php echo $btalumnos ?>"><br>
         <label for="objetivo" id="cajatextarea">Objetivo:</label>
         <textarea name="objetivo"> <?php echo $bobjetivo ?></textarea><br>
+         <label for="aprobada">Aprobada:</label>
+        <select name="aprobada">
+            <option value="No" <?php if ($baprobada == "No") echo 'selected'; ?>> No </option>
+            <option value="Si" <?php if ($baprobada == "Si") echo 'selected'; ?>> Si </option>
+        </select> <br>
         <button type="submit" name="actualizaractividad">Actualizar actividad</button>
     </form>
    

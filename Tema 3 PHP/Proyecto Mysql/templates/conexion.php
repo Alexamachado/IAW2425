@@ -1,6 +1,6 @@
  <?php $servername = "sql308.thsite.top";
   $username = "thsi_38097488";
-  $password = "******";
+  $password = "xxxxxxxxx";
   $dbname = "thsi_38097488_ejemplo";
   $enlace = mysqli_connect($servername,$username,$password,$dbname);
   if (!$enlace){

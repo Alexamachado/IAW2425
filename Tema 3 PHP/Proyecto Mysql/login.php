@@ -19,16 +19,26 @@ session_start();
         $fila = mysqli_fetch_assoc($resultado);
             //if ($fila["id"]) {   
                 $_SESSION['nombre'] = "$nombre";
+               // $_SESSION['email'] = "$email";
+               $last = "SELECT ultimasesion from usuarios WHERE email='$email'";
+                $ultimasesion = mysqli_query($enlace, $last);
+               if (mysqli_num_rows($ultimasesion) > 0){  //Al menos tengo un registro
+                $fila2 = mysqli_fetch_assoc($ultimasesion);
+                $_SESSION['ultimasesion'] = $fila2["ultimasesion"];
+                }
                 $_SESSION['rol'] = $fila['rol'];
                 $_SESSION['sesion'] = "1";
-                $inicio_sesion = "El usuario " . $nombre . " se ha conectado a las " . date("d-m-Y H:i:s") . "<br>";
-                file_put_contents("logs.txt", $inicio_sesion, FILE_APPEND);
+
+                setlocale(LC_TIME, 'es_ES', 'spanish');
+                $fecha = strftime('%d de %B a las %H:%M horas');
+                $updatelast = ("UPDATE usuarios SET ultimasesion = '$fecha' WHERE email='$email'");
+                $querysesion = mysqli_query($enlace, $updatelast);
             header("Location: index.php");
         }else{
             $texto = "Usuario, email o contraseña  incorrecta, vuelva a intentarlo";
         }
 }   }
-// Cierre de la conexión
+// Cierre de la conexión 
   mysqli_close($enlace);
 ?>
 

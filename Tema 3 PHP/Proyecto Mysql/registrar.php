@@ -8,20 +8,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $apellido = htmlspecialchars(trim($_POST['apellido']));
     $email = htmlspecialchars(trim($_POST['email']));
     $password = htmlspecialchars(trim($_POST['contrasena']));
+    $password2 = htmlspecialchars(trim($_POST['contrasena2']));
     $departamento = $_POST['departamento'];
     $pemail = substr($email,-16);
-    if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['email']) || empty($_POST['contrasena']) || $_POST['departamento'] == "0") {
+
+    if (empty($_POST['nombre']) || empty($_POST['apellido']) || empty($_POST['email']) || empty($_POST['contrasena']) || empty($_POST['contrasena2']) || $_POST['departamento'] == "0") {
         $texto = "Error: Todos los campos son obligatorios.";
     }else if($pemail != "@iesamachado.org"){  
        $texto = "Error: El correo tiene que ser del dominio @iesamachado.org.";
-        }else{
-
-
+    }else if ($password != $password2){
+    $texto = "Las contraseñas deben de ser iguales";
+    }else{
     $query = "SELECT id FROM usuarios WHERE email='$email'";
     $resultado = mysqli_query($enlace, $query);
     $resultado_assoc = mysqli_fetch_assoc($resultado);
     if (mysqli_num_rows($resultado) > 0) {
-        echo "<p>Error: El usuario ya está registrado.</p>";
+        $texto="<p>Error: El usuario ya está registrado.</p>";
     }
     else{
          $qdepartamento = "SELECT nombre FROM departamento WHERE id_departamento='$departamento'";
@@ -76,6 +78,8 @@ mysqli_close($enlace);
         <input type="email" id="email" name="email"><br>
         <label for="password">Contraseña:</label>
         <input type="password" id="contrasena" name="contrasena"><br>
+        <label for="password2">Repita la contraseña</label>
+        <input type="password" id="contrasena2" name="contrasena2"><br>
         <label for="departamento">Departamento:</label>
         <select name="departamento" id="departamento">
             <option selected value="0"></option>
@@ -86,10 +90,10 @@ mysqli_close($enlace);
             <option value="5"> Física y Quimica </option>
         </select> <br>
         <button type="submit">Registrar</button>
-    </form>
+    </form><br>
 
     <?php echo $texto;
-        echo $volver; ?>
+        echo " " . $volver; ?>
         
     <script>
     function redirigir(){
