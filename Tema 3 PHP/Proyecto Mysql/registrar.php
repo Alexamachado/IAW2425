@@ -1,5 +1,13 @@
 <?php
 include('templates/conexion.php');
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
+
+//require_once __DIR__ . '/vendor/autoload.php';
 
 $texto=$volver="";
 $departamento = "0";
@@ -42,8 +50,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
            //     $texto = "Usuario registrado correctamente. Se ha enviado un correo de confirmación.";
             //    $volver = "<button onclick='redirigir()'>Pulse para iniciar sesion</button>";
            // } else { */
-                $texto = "Usuario registrado, pulse el boton de al lado para iniciar sesion.";
+           $mail = new PHPMailer(true);
+
+            try {
+                // Configure PHPMailer
+                $mail->isSMTP();
+                $mail->SMTPAuth = true;
+                $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+                $mail->Port = 587;
+               // Configure SMTP Server
+                $mail->Host = 'smtp.gmail.com';
+                $mail->Username = 'alexandroguerrero02@iesamachado.org';
+                $mail->Password = 'zqpd txvd cjsx ihyu';
+
+                // Configure Email
+                $mail->setFrom('alexandroguerrero02@iesamachado.org', 'Sistema de Gestión de Incidencias');
+                $mail->addAddress($email); //$nombre
+                $mail->Subject = 'Bienvenido al Sistema de Gestión de Incidencias';
+                $mail->isHTML(true);
+                $mail->Body    = '<h1>¡Bienvenido ' . $nombre . '!</h1>
+                                <p>Gracias por registrarte en el sistema de gestión de incidencias.</p>
+                                <p>Ahora podrás gestionar tus incidencias de manera fácil y rápida.</p>';
+                $mail->AltBody = '¡Bienvenido! Gracias por registrarte en el sistema de gestión de incidencias.';
+
+
+    // send mail
+                $mail->Send();
+                $texto = 'Correo de bienvenida enviado correctamente.';
                 $volver = "<button onclick='redirigir()'>Iniciar sesion</button>";
+            } catch (Exception $e) {
+                $texto = "Hubo un error al enviar el correo: {$mail->ErrorInfo}";
+            }
+               // $texto = "Usuario registrado, pulse el boton de al lado para iniciar sesion.";
+              //  $volver = "<button onclick='redirigir()'>Iniciar sesion</button>";
             //}
         } else {
             $texto = "Error al registrar el usuario: " . mysqli_error($enlace);
@@ -60,15 +99,28 @@ mysqli_close($enlace);
 <head>
     <title>Registro | Management Machado</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    
+     <link id="stylesheet" rel="stylesheet" href="templates/light.css">
     <style>
-     body {
+     #botonestilo{
+            position: absolute;
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        body {
             padding: 1em;
         }
     </style>
 </head>
 <body>
-<h2> Registro nuevo usuario </h2> <br>
+<h2> Registro nuevo usuario </h2>
+<button id="botonestilo">Modo oscuro</button>
+<script src="cambiomodo.js"></script> <br>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre"><br>

@@ -93,8 +93,25 @@ mysqli_close($enlace);
 <title>Estadísticas | Management Machado</title>
 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+ <link id="stylesheet" rel="stylesheet" href="templates/light.css">
+    <style>
+     #botonestilo{
+            position: absolute;
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        body {
+            padding: 1em;
+        }
+    </style>
 </head>
-<body style="padding: 1em;">
+<body>
 
 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
 
@@ -152,6 +169,8 @@ $('form').submit(function(e) {
 
 </script>
 
+<button id="botonestilo">Modo oscuro</button>
+<script src="cambiomodo.js"></script>
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <label for="departamento">departamento:</label>
         <select name="departamento" id="departamento">

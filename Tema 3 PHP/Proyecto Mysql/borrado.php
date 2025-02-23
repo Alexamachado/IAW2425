@@ -32,14 +32,29 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Borrado Actividad | Management Machado</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-     <style>
-     body {
+       <link id="stylesheet" rel="stylesheet" href="templates/light.css">
+     
+    <style>
+     #botonestilo{
+            position: absolute;
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        body {
             padding: 1em;
         }
-     </style>   
+    </style>
   </head>
   <body>
     <h2> Borrado de actividades </h2>
+    <button id="botonestilo">Modo oscuro</button>
+<script src="cambiomodo.js"></script>
  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <label for="borrado">Introduce titulo actividad:</label>
         <input type="text" name="borrado">

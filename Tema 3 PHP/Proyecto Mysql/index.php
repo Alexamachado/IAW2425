@@ -12,9 +12,14 @@ $pages = ceil($Pnumero / 5);
 
 $start = "0";
 if(isset($_GET['page-nr'])){
-    $page = $_GET['page-nr'] - 1;
-    $start = $page * 5;
+    if ($_GET['page-nr'] == 1){ 
+        $page = 1;
     } else {
+    $page = $_GET['page-nr'];
+   $start = ($page - 1) * 5;
+    echo $start;
+    }
+} else {
     $page = 1;
 }
 
@@ -114,18 +119,31 @@ mysqli_close($enlace);
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-
     <title>Pagina principal | Management Machado</title>
-
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <?php include('templates/index-css.php'); ?>
-    
+     <link id="stylesheet" rel="stylesheet" href="templates/light.css">
+     
+    <style>
+      #botonestilo{
+            position: absolute;
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        </style>
   </head>
   <body>
 
 <div class="contenedor1">
-    <h2> Bienvenido <?php echo $_SESSION['nombre'];  ?>,  <?php echo $sesion  ?>. </h2>                      
-    <span id="darkbutton">  <a href="index.php?toggle_dark_mode=true"> <button class="dark-mode-toggle"> <?php echo $_SESSION['dark_mode'] ? 'Cambiar a Modo Luz' : 'Cambiar a Modo Oscuro'; ?> </button> </a> </span>
+    <h2> Bienvenido <?php echo $_SESSION['nombre'];  ?>,  <?php echo $sesion  ?> desde la dirección IP <?php echo $_SERVER['REMOTE_ADDR']  ?>. </h2>                      
+    <!-- <span id="darkbutton">  <a href="index.php?toggle_dark_mode=true"> <button class="dark-mode-toggle"> <?php echo $_SESSION['dark_mode'] ? 'Cambiar a Modo Luz' : 'Cambiar a Modo Oscuro'; ?> </button> </a> </span> -->
+      <button id="botonestilo">Modo oscuro</button>
+      <script src="cambiomodo.js"></script>
     <!--<h3> se conecto por ultima vez el  </h3>-->
     <div> &nbsp; &nbsp;  Total de actividades propuestas: <?php echo $totalaprobadas;  ?> </div>
     <div> &nbsp; &nbsp; Total de actividades aprobadas: <?php echo $siaprobadas;  ?> </div>
@@ -205,18 +223,24 @@ mysqli_close($enlace);
                     <a href="?page-nr=<?php echo $_GET['page-nr'] + 1 ?>"> Siguiente</a>
               <?php }} ?> -->
             
-             <?php if ($page > 1): ?>
-            <a href="index.php?page-nr=<?php echo $page - 1; ?>&columna=<?php echo $columna; ?>&orden=<?php echo $orden; ?>">Página Anterior</a>
-        <?php endif; ?>
-
-        <?php if ($page < $total_paginas): ?>
-            <a href="index.php?page-nr=<?php echo $page + 1; ?>&columna=<?php echo $columna; ?>&orden=<?php echo $orden; ?>">Página Siguiente</a>
-        <?php endif; ?>
+             <?php if ($page > 1){ 
+                 if (isset($_GET["columna"])) {?>
+            <a href="index.php?columna=<?php echo $columna; ?>&orden=<?php echo $orden; ?>&page-nr=<?php echo $page - 1; ?>">Página Anterior</a>
+        <?php }else{ ?>
+            <a href="index.php?page-nr=<?php echo $page - 1; ?>">Página Anterior</a>
+        <?php }} ?>
+        <?php if ($page < $pages){ 
+            if (isset($_GET["columna"])) { ?>
+            <a href="index.php?columna=<?php echo $columna; ?>&orden=<?php echo $orden; ?>&page-nr=<?php echo $page + 1; ?>">Página Siguiente</a>
+        <?php }else{ ?>
+            <a href="index.php?page-nr=<?php echo $page + 1; ?>">Página Siguiente</a>
+        <?php }} ?>
+            
             
 
         </div>
         <div class="page-info">
-            Enseñando 1 de <?php echo $pages ?> paginas
+            Enseñando <?php echo $page  ?> de <?php echo $pages ?> paginas
         </div>
 
  </center> <br> <br>

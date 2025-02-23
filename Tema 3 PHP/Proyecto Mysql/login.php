@@ -13,20 +13,17 @@ session_start();
         $password = htmlspecialchars(trim($_POST['password']));
         $email = htmlspecialchars(trim($_POST['email']));
     // Verificar si el usuario existe
-        $query = "SELECT id, rol FROM usuarios WHERE nombre='$nombre' AND contrasena='$password' AND email='$email'";
+        $query = "SELECT id, rol, ultimasesion FROM usuarios WHERE nombre='$nombre' AND contrasena='$password' AND email='$email'";
         $resultado = mysqli_query($enlace, $query);
         if (mysqli_num_rows($resultado) > 0){  //Al menos tengo un registro
         $fila = mysqli_fetch_assoc($resultado);
             //if ($fila["id"]) {   
                 $_SESSION['nombre'] = "$nombre";
-               // $_SESSION['email'] = "$email";
-               $last = "SELECT ultimasesion from usuarios WHERE email='$email'";
-                $ultimasesion = mysqli_query($enlace, $last);
-               if (mysqli_num_rows($ultimasesion) > 0){  //Al menos tengo un registro
-                $fila2 = mysqli_fetch_assoc($ultimasesion);
-                $_SESSION['ultimasesion'] = $fila2["ultimasesion"];
+               if ($fila["ultimasesion"] != "" ){ 
+                $_SESSION['ultimasesion'] = $fila["ultimasesion"];
                 }
                 $_SESSION['rol'] = $fila['rol'];
+                $_SESSION['id'] = $fila['id'];
                 $_SESSION['sesion'] = "1";
 
                 setlocale(LC_TIME, 'es_ES', 'spanish');
@@ -47,14 +44,28 @@ session_start();
 <head>
     <title>Inicio sesión | Management Machado</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <link id="stylesheet" rel="stylesheet" href="templates/light.css">
     <style>
-     body {
+     #botonestilo{
+            position: absolute;
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        body {
             padding: 1em;
         }
     </style>
 </head>
 <body>
-<h2> Inicio sesion </h2> <br>
+<h2> Inicio sesion </h2> 
+<button id="botonestilo">Modo oscuro</button>
+<script src="cambiomodo.js"></script> <br>
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <label for="nombre">Nombre:</label>
         <input type="text" id="nombre" name="nombre"><br>
@@ -68,5 +79,11 @@ session_start();
     <?php echo $texto ?>
 
     <!--<button onclick="window.location='registrar.php';">Registrarse como nuevo usuario</button>-->
+    <button onclick='redirigir()'>¿Has olvidado tu contraseña?</button>
+     <script>
+    function redirigir(){
+        window.location="recuperarpassword.php";
+    }
+    </script>
 </body>
 </html>

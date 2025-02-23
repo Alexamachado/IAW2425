@@ -103,9 +103,18 @@ if (isset($_POST["actualizaractividad"])) {
     <script src="https://cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+      <link id="stylesheet" rel="stylesheet" href="templates/light.css">
     <style>
-        #cajatextarea{
-            vertical-align: top;
+     #botonestilo{
+            position: absolute;
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
         body {
             padding: 1em;
@@ -114,6 +123,8 @@ if (isset($_POST["actualizaractividad"])) {
   </head>
   <body>
 <h2> Actualización de actividades </h2>
+<button id="botonestilo">Modo oscuro</button>
+<script src="cambiomodo.js"></script>
 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 <label for="">Introduce la actividad a modificar</label>
 <input type="text" name="Bactividad">

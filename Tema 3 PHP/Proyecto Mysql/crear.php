@@ -3,6 +3,17 @@ session_start();
 if (!isset($_SESSION['sesion'])) { header("Location: inicio.php");}
 include('templates/conexion.php');
 
+$estado=$tipo=$departamento=$profesor=$trimestre=$hora_inicio=$hora_fin=$organizador=$ubicacion=$sdepartamento="";
+
+$querydepartamento = "SELECT id_departamento, nombre FROM departamento;";   
+$resultadodepartamento = mysqli_query($enlace, $querydepartamento);
+$opciones = mysqli_fetch_all($resultadodepartamento, MYSQLI_ASSOC);
+foreach($opciones as $opcion){               
+    //$qtipo = "SELECT nombre FROM tipo_actividad WHERE id_tipo='$fila[id_tipo]'";
+    //$rtipo = mysqli_fetch_assoc(mysqli_query($enlace, $qtipo));
+    $sdepartamento .= " <option value=" . $opcion['id_departamento'] .">" . $opcion['nombre'] . "</option>";
+}
+
 $estado=$tipo=$departamento=$profesor=$trimestre=$hora_inicio=$hora_fin=$organizador=$ubicacion="";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $titulo = htmlspecialchars(trim($_POST['titulo']));
@@ -17,9 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $organizador = $_POST['organizador'];
     $acompanantes = htmlspecialchars(trim($_POST['acompanantes']));
     $ubicacion = $_POST['ubicacion'];
+    $idusuario = $_SESSION['id'];
     $coste = htmlspecialchars(trim($_POST['coste']));
     $Talumnos = htmlspecialchars(trim($_POST['Talumnos']));
     $objetivo = htmlspecialchars(trim($_POST['objetivo']));
+
     if (empty($titulo) || $tipo == "0" || $departamento == "0" || $profesor == "0" || empty($trimestre)
        || empty($fecha_inicio) || empty($fecha_fin) || empty($hora_inicio) || empty($hora_fin)
        || $organizador == "0" || empty($acompanantes) || $ubicacion == "0" || empty($coste) 
@@ -37,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $estado = "Las fechas estan mal introducidas"; 
         }
         else{
-            $query = "INSERT INTO actividad (titulo, id_tipo, id_departamento, id_profesor_responsable, trimestre, fecha_inicio, hora_inicio, fecha_fin, hora_fin, id_organizador, acompanantes, id_ubicacion, coste, total_alumnos, objetivo, aprobada ) VALUES ('$titulo', '$tipo', '$departamento', '$profesor','$trimestre', '$fecha_inicio', '$hora_inicio', '$fecha_fin', '$hora_fin', '$organizador', '$acompanantes', '$ubicacion', '$coste', '$Talumnos', '$objetivo', 'No'   )";
+            $query = "INSERT INTO actividad (titulo, id_tipo, id_departamento, id_profesor_responsable, trimestre, fecha_inicio, hora_inicio, fecha_fin, hora_fin, id_organizador, acompanantes, id_ubicacion, coste, total_alumnos, objetivo, aprobada, id_usuario ) VALUES ('$titulo', '$tipo', '$departamento', '$profesor','$trimestre', '$fecha_inicio', '$hora_inicio', '$fecha_fin', '$hora_fin', '$organizador', '$acompanantes', '$ubicacion', '$coste', '$Talumnos', '$objetivo', 'No', '$idusuario'   )";
             if (mysqli_query($enlace, $query)) {
             // Enviar correo electrónico de confirmación
             $estado = "Actividad insertada exitosamente";
@@ -62,17 +75,28 @@ mysqli_close($enlace);
        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet"  
     href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+     <link id="stylesheet" rel="stylesheet" href="templates/light.css">
     <style>
-        #cajatextarea{
-            vertical-align: top;
+     #botonestilo{
+            position: absolute;
+            top: 20px; /* Distance from the top */
+            right: 20px; /* Distance from the right */
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
-     body {
+        body {
             padding: 1em;
         }
     </style>
   </head>
   <body>
 <h2> Creacion de actividades </h2>
+<button id="botonestilo">Modo oscuro</button>
+<script src="cambiomodo.js"></script>
  <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
         <label for="titulo">titulo:</label>
         <input type="text" name="titulo"><br>
@@ -85,11 +109,12 @@ mysqli_close($enlace);
         <label for="departamento">departamento:</label>
         <select name="departamento" id="departamento">
             <option selected value="0" disabled></option>
-            <option value="1"> Lengua </option>
+            <?php echo $sdepartamento ?>
+        <!--<option value="1"> Lengua </option>
             <option value="2"> Matemáticas </option>
             <option value="3"> Educacion Física </option>
             <option value="4"> Informatica </option>
-            <option value="5"> Física y Quimica </option>
+            <option value="5"> Física y Quimica </option> -->
         </select> <br>
         <label for="profesor">Profesor responsable:</label>
         <select name="profesor" id="profesor">
